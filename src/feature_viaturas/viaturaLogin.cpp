@@ -6,7 +6,6 @@
 
 void menuTipoPolicia();
 void menuDadosViatura(char *&codigo, int &quantPM);
-bool codigoInvalido(char *codigo);
 
 void viaturaLogin(Viatura *&viaturaAtual) {
     int tipoPolicia, quantPM;
@@ -22,11 +21,6 @@ void viaturaLogin(Viatura *&viaturaAtual) {
 
     if(numeroDePMsInvalido) {
         printf("\nAutorização de embarque negada: número de PMs inválido\n");
-        return;
-    }
-
-    if(codigoInvalido(codigo)) {
-        printf("\nAutorização de embarque negada: código inválido\n");
         return;
     }
 
@@ -52,8 +46,4 @@ void menuDadosViatura(char *&codigo, int &quantPM) {
     scanf("%s", codigo);
     printf("Quantidade de PMs: ");
     scanf("%d", &quantPM);
-}
-
-bool codigoInvalido(char *codigo) {
-   return codigo[0] != '0' && codigo[1] != '0' && codigo[2] < '1' || codigo[2] > '9';
 }

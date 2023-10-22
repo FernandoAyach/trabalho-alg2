@@ -16,7 +16,6 @@ int main() {
     Celula *pessoas = NULL;
 
     lerArquivos(viatura, policiais, pessoas);
-    //imprimirViaturas(viatura);
 
     do {
         menu();
@@ -28,6 +27,10 @@ int main() {
         
 
     } while(op != 0);
+
+    desalocar(viatura);
+    desalocar(policiais);
+    desalocar(pessoas);
 }
 
 void menu() {
@@ -41,6 +44,10 @@ void menu() {
 
 void lerArquivos(Celula *&viatura, Celula *&policiais, Celula *&pessoas) {
     lerArquivoViaturas(viatura);
-    //lerArquivoPoliciais(policiais);
-    //lerArquivoPessoas(pessoas);
+    lerArquivoPoliciais(policiais);
+    lerArquivoPessoas(pessoas);
+
+    imprimirViaturas(viatura);
+    imprimirPoliciais(policiais);
+    imprimirPessoas(pessoas);
 }

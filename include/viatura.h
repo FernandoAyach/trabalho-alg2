@@ -10,7 +10,7 @@ struct Viatura {
     char tipo[TIPO_VIATURA+1];
 };
 
-void lerArquivoViaturas(Celula *&viatura);
+void lerArquivoViaturas(Celula *&viaturas);
 
 void viaturaLogin(Viatura *&viaturaAtual);
 void viaturaNeutro(char **nomePMs);

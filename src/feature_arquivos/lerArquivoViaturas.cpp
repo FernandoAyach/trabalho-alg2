@@ -5,7 +5,7 @@
 #include "../../include/viatura.h"
 #include "../../include/linked_list.h"
 
-void lerArquivoViaturas(Celula *&viatura) {
+void lerArquivoViaturas(Celula *&viaturas) {
     FILE *pArq;
     char codigo[COD_VIATURA+1];
     char tipo[TIPO_VIATURA+1];
@@ -13,7 +13,7 @@ void lerArquivoViaturas(Celula *&viatura) {
     pArq = fopen(PATH_VIATURA, "r");
 
     if(pArq == NULL) {
-        printf("[ERRO-ARQUIVOS]: Erro ao abrir viaturas\n");
+        printf("[ERRO-ARQUIVOS]: Erro ao abrir viaturas.txt\n");
         return;
     }
 
@@ -23,7 +23,7 @@ void lerArquivoViaturas(Celula *&viatura) {
         Viatura *v = (Viatura *) calloc(1, sizeof(Viatura));
         strcpy(v->codigo, codigo);
         strcpy(v->tipo, tipo);
-        inserirInicio(viatura, v);
+        inserirInicio(viaturas, v);
 
         fscanf(pArq, "%s", codigo);
         fscanf(pArq, "%s", tipo);

@@ -1,15 +1,17 @@
 #pragma once
+#include "linked_list.h"
 
 #define MAX 40
 #define CPF_SIZE 11
+#define PATH_PESSOA "D:\\Usuario\\Desktop\\Central\\Codes\\ufms\\alg2\\spm\\arquivos_entrada\\pessoas.txt"
 
 struct Pessoa {  
     char nome[MAX+1];
     char CPF[CPF_SIZE+1];
     char cidade[MAX+1];
     int passagensPolicia;
-    char *nomesI[MAX];
+    char inadimplencias[MAX][MAX];
 };
 
-void lerArquivoPessoas(Pessoa *&pessoas);
+void lerArquivoPessoas(Celula *&pessoas);
 
