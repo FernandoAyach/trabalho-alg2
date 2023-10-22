@@ -3,20 +3,27 @@
 
 #include "include/viatura.h"
 #include "include/policial.h"
+#include "include/pessoa.h"
+#include "include/linked_list.h"
 
 void menu();
+void lerArquivos(Celula *&viatura, Celula *&policiais, Celula *&pessoas);
 
 int main() {
     int op;
-    Viatura *viatura = NULL;
-    Policial *policiais = NULL;
+    Celula *viatura = NULL;
+    Celula *policiais = NULL;
+    Celula *pessoas = NULL;
+
+    lerArquivos(viatura, policiais, pessoas);
+    //imprimirViaturas(viatura);
 
     do {
         menu();
         scanf("%d", &op);
 
         if(op == 1) {
-            viaturaLogin(viatura);
+            //viaturaLogin((Viatura *)viatura);
         }
         
 
@@ -30,4 +37,10 @@ void menu() {
     printf("4 - Policial Militar\n");
     printf("5 - Oficial\n");
     printf("6 - Comandante Geral     0 - Encerrar Programa\n");
+}
+
+void lerArquivos(Celula *&viatura, Celula *&policiais, Celula *&pessoas) {
+    lerArquivoViaturas(viatura);
+    //lerArquivoPoliciais(policiais);
+    //lerArquivoPessoas(pessoas);
 }

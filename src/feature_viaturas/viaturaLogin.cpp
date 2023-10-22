@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../include/viatura.h"
-#include "../include/policial.h"
+#include "../../include/viatura.h"
+#include "../../include/policial.h"
 
 void menuTipoPolicia();
 void menuDadosViatura(char *&codigo, int &quantPM);

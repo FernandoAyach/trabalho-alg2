@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../include/viatura.h"
+#include "../../include/viatura.h"
 
 void menuNeutro();
 

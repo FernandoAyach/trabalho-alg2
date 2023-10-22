@@ -12,3 +12,5 @@ struct Policial {
     char cargo[MAX+1];
     char senha[MAX+1];
 };
+
+void lerArquivoPoliciais(Policial *&policiais);
