@@ -2,17 +2,22 @@
 #include <stdlib.h>
 
 #include "../../include/viatura.h"
+#include "../../include/linked_list.h"
 
 void menuNeutro();
 
-void viaturaNeutro(char **nomePMs) {
+void viaturaNeutro(Celula *viaturasEmUso, Celula *policiaisDoDia) {
     int op;
     menuNeutro();
+
+    imprimirViaturas(viaturasEmUso);
+    imprimirPoliciais(policiaisDoDia);
+
     scanf("%d", &op);
 
     if(op == 2) return;
     
-    viaturaRonda();
+    //viaturaRonda();
 }
 
 void menuNeutro() {

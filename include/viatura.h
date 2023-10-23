@@ -11,7 +11,11 @@ struct Viatura {
 };
 
 void lerArquivoViaturas(Celula *&viaturas);
+Celula *buscarViatura(Celula *lst, char codigo[COD_VIATURA+1]);
 
-void viaturaLogin(Viatura *&viaturaAtual);
-void viaturaNeutro(char **nomePMs);
+void viaturaLogin(
+    Celula *&viaturas, Celula *&policiais,
+    Celula *&viaturasEmUso, Celula *&policiaisDoDia
+);
+void viaturaNeutro(Celula *viaturasEmUso, Celula *policiaisDoDia);
 void viaturaRonda();

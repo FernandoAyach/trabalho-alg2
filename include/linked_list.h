@@ -1,4 +1,5 @@
 #pragma once
+
 struct Celula {
     void *d;
     Celula *prox;

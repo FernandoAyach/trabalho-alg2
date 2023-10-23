@@ -11,24 +11,27 @@ void lerArquivos(Celula *&viatura, Celula *&policiais, Celula *&pessoas);
 
 int main() {
     int op;
-    Celula *viatura = NULL;
+    Celula *viaturas = NULL;
     Celula *policiais = NULL;
     Celula *pessoas = NULL;
 
-    lerArquivos(viatura, policiais, pessoas);
+    Celula *viaturasEmUso = NULL;
+    Celula *policiaisDoDia = NULL;
+
+    lerArquivos(viaturas, policiais, pessoas);
 
     do {
         menu();
         scanf("%d", &op);
 
         if(op == 1) {
-            //viaturaLogin((Viatura *)viatura);
+            viaturaLogin(viaturas, policiais, viaturasEmUso, policiaisDoDia);
         }
         
 
     } while(op != 0);
 
-    desalocar(viatura);
+    desalocar(viaturas);
     desalocar(policiais);
     desalocar(pessoas);
 }
@@ -42,12 +45,11 @@ void menu() {
     printf("6 - Comandante Geral     0 - Encerrar Programa\n");
 }
 
-void lerArquivos(Celula *&viatura, Celula *&policiais, Celula *&pessoas) {
-    lerArquivoViaturas(viatura);
+void lerArquivos(Celula *&viaturas, Celula *&policiais, Celula *&pessoas) {
+    lerArquivoViaturas(viaturas);
     lerArquivoPoliciais(policiais);
     lerArquivoPessoas(pessoas);
-
-    imprimirViaturas(viatura);
-    imprimirPoliciais(policiais);
-    imprimirPessoas(pessoas);
+    //imprimirViaturas(viatura);
+    //imprimirPoliciais(policiais);
+    //imprimirPessoas(pessoas);
 }
