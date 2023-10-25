@@ -11,7 +11,8 @@ struct Pessoa {
     char cidade[MAX+1];
     int passagensPolicia;
     char inadimplencias[MAX][MAX];
+    int nInadimplencias;
 };
 
 void lerArquivoPessoas(Celula *&pessoas);
-
+Celula *buscarPessoa(Celula *lst, char CPF[CPF_SIZE+1]);

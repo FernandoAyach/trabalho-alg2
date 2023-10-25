@@ -6,18 +6,15 @@
 
 void menuNeutro();
 
-void viaturaNeutro(Celula *viaturasEmUso, Celula *policiaisDoDia) {
+void viaturaNeutro(Celula *viaturasEmUso, Celula *policiaisDoDia, Celula *pessoas) {
     int op;
     menuNeutro();
 
-    imprimirViaturas(viaturasEmUso);
-    imprimirPoliciais(policiaisDoDia);
-
     scanf("%d", &op);
 
-    if(op == 2) return;
-    
-    //viaturaRonda();
+    if(op == 1) {
+        viaturaChamada(pessoas);
+    } 
 }
 
 void menuNeutro() {

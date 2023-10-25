@@ -29,6 +29,13 @@ Celula *buscarPolicial(Celula *lst, char nomeGuerra[MAX+1]) {
     return lst;
 }
 
+Celula *buscarPessoa(Celula *lst, char CPF[CPF_SIZE+1]) {
+    while(lst != NULL && strcmp(((Pessoa *)lst->d)->CPF, CPF) != 0) {
+        lst = lst->prox;
+    }
+    return lst;
+}
+
 void imprimirViaturas(Celula *lst) {
     while(lst != NULL) {
         printf("Viatura %s\n", ((Viatura *)lst->d)->codigo);

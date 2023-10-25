@@ -25,7 +25,11 @@ int main() {
         scanf("%d", &op);
 
         if(op == 1) {
-            viaturaLogin(viaturas, policiais, viaturasEmUso, policiaisDoDia);
+            viaturaLogin(viaturas, policiais, pessoas, viaturasEmUso, policiaisDoDia);
+        } else if(op == 2) {
+            if(viaturasEmUso != NULL) {
+                //viaturaNeutro(viaturasEmUso, policiaisDoDia, );
+            }
         }
         
 

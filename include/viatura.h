@@ -14,8 +14,10 @@ void lerArquivoViaturas(Celula *&viaturas);
 Celula *buscarViatura(Celula *lst, char codigo[COD_VIATURA+1]);
 
 void viaturaLogin(
-    Celula *&viaturas, Celula *&policiais,
+    Celula *&viaturas, Celula *&policiais, Celula *pessoas,
     Celula *&viaturasEmUso, Celula *&policiaisDoDia
 );
-void viaturaNeutro(Celula *viaturasEmUso, Celula *policiaisDoDia);
+void viaturaNeutro(Celula *viaturasEmUso, Celula *policiaisDoDia, Celula *pessoas);
 void viaturaRonda();
+void viaturaChamada(Celula *pessoas);
+void viaturaBuscarCpf(Celula *pessoas);

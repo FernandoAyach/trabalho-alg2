@@ -9,7 +9,7 @@ void menuTipoPolicia();
 void menuDadosViatura(char codigo[COD_VIATURA+1], int &quantPM);
 
 void viaturaLogin(
-    Celula *&viaturas, Celula *&policiais,
+    Celula *&viaturas, Celula *&policiais, Celula *pessoas,
     Celula *&viaturasEmUso, Celula *&policiaisDoDia
 ) {
     int tipoPolicia, quantPM;
@@ -49,7 +49,7 @@ void viaturaLogin(
         }
     }
 
-    viaturaNeutro(viaturasEmUso, policiaisDoDia);
+    viaturaNeutro(viaturasEmUso, policiaisDoDia, pessoas);
 }
 
 void menuTipoPolicia() {

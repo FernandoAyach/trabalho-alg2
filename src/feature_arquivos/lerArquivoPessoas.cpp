@@ -37,9 +37,11 @@ void lerArquivoPessoas(Celula *&pessoas) {
         strcpy(pessoa->CPF, CPF);
         strcpy(pessoa->cidade, cidade);
         pessoa->passagensPolicia = passagensPolicia;
+        pessoa->nInadimplencias = x;
         
         for(int i = 0; i < x; i++) {
             strcpy(pessoa->inadimplencias[i], inadimplencias[i]);
+            printf("%s\n", pessoa->inadimplencias[i]);
         }
         
         inserirInicio(pessoas, pessoa);
@@ -55,7 +57,7 @@ int fscanfPessoa(
     int &passagensPolicia,
     char inadimplencias[MAX][MAX]
 ) { 
-    int ni, x = 0;
+    int ni, k = 0;
     fscanf(pArq, " %[^\n]", nome);
     fscanf(pArq, " %s", CPF);
     fscanf(pArq, " %[^\n]", cidade);
@@ -63,12 +65,12 @@ int fscanfPessoa(
 
     for(int j = 0; j < 2; j++) {
         fscanf(pArq, "%d", &ni);
-
+       
         for(int i = 0; i < ni; i++) {
-            fscanf(pArq, " %[^\n]", inadimplencias[i]);
-            x++;
+            fscanf(pArq, " %[^\n]", inadimplencias[k]);
+            k++;
         }
     }
-    return x;
+    return k;
 }
 
