@@ -21,3 +21,5 @@ void viaturaNeutro(Celula *viaturasEmUso, Celula *policiaisDoDia, Celula *pessoa
 void viaturaRonda();
 void viaturaChamada(Celula *pessoas);
 void viaturaBuscarCpf(Celula *pessoas);
+void viaturaSolicitarReforcos();
+void viaturaPrisao(Celula *pessoas, int &x);

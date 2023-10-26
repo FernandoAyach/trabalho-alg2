@@ -12,16 +12,16 @@ void viaturaChamada(Celula *pessoas) {
     menuChamada(descricao, localizacao, acaoPolicial);
     if(acaoPolicial == 2) return;
 
-   
-
     do {
         menuOcorrencia(op);
         if(op == 1) {
             viaturaBuscarCpf(pessoas);
+        } else if(op == 2) {
+            viaturaSolicitarReforcos();
+        } else if(op == 3) {
+            viaturaPrisao(pessoas, op);
         }
-    } while(op != 4);
-    
-    
+    } while(op != 4); 
 }
 
 void menuChamada(char *&descricao, char *&localizacao, int &acaoPolicial) {

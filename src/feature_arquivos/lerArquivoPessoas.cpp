@@ -41,7 +41,6 @@ void lerArquivoPessoas(Celula *&pessoas) {
         
         for(int i = 0; i < x; i++) {
             strcpy(pessoa->inadimplencias[i], inadimplencias[i]);
-            printf("%s\n", pessoa->inadimplencias[i]);
         }
         
         inserirInicio(pessoas, pessoa);
