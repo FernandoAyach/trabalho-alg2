@@ -9,8 +9,8 @@ void menuTipoPolicia();
 void menuDadosViatura(char codigo[COD_VIATURA+1], int &quantPM);
 
 void viaturaLogin(
-    Celula *&viaturas, Celula *&policiais, Celula *pessoas,
-    Celula *&viaturasEmUso, Celula *&policiaisDoDia
+    Celula *&viaturas, Celula *&policiais, Celula *pessoas, Celula *&viaturaAtual,
+    Celula *chamadasEmAndamento
 ) {
     int tipoPolicia, quantPM;
     char codigo[COD_VIATURA+1];
@@ -29,27 +29,26 @@ void viaturaLogin(
     }
 
     Celula *viatura = buscarViatura(viaturas, codigo);
-    if(viatura != NULL) {
-        inserirInicio(viaturasEmUso, (Viatura*)viatura->d);
-    } else {
-        printf("Viatura não existe!\n");
-    }
+    if(viatura != NULL) viaturaAtual = viatura;
+    else printf("Viatura não existe!\n");
    
     char nomeGuerra[MAX];
     Celula *policial;
+    ((Viatura *)viatura->d)->policiais = (char **) calloc(quantPM, sizeof(char *));
     printf("Identificação dos PMS:\n");
     for(int i = 0; i < quantPM; i++) {
         scanf(" %[^\n]", nomeGuerra);
         policial = buscarPolicial(policiais, nomeGuerra);
 
         if(policial != NULL) {
-            inserirInicio(policiaisDoDia, (Policial*)policial->d);  
+            ((Viatura *)viatura->d)->policiais[i] = (char *) calloc(quantPM, sizeof(char));
+            ((Viatura *)viatura->d)->policiais[i] = ((Policial *)policial->d)->CPF; 
         } else {
             printf("Policial não existe!\n");
         }
     }
-
-    viaturaNeutro(viaturasEmUso, policiaisDoDia, pessoas);
+    
+    viaturaNeutro(viaturaAtual, pessoas, chamadasEmAndamento);
 }
 
 void menuTipoPolicia() {

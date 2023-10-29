@@ -5,13 +5,15 @@
 
 void menuRonda();
 
-void viaturaRonda() {
+void viaturaRonda(int &back) {
     int op;
 
     do {
         menuRonda();
         scanf("%d", &op);
     } while(op != 1);
+
+    back = 3;
 }
 
 void menuRonda() {

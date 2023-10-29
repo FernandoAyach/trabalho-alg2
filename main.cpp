@@ -4,7 +4,9 @@
 #include "include/viatura.h"
 #include "include/policial.h"
 #include "include/pessoa.h"
+#include "include/copom.h"
 #include "include/linked_list.h"
+#include "include/fila.h"
 
 void menu();
 void lerArquivos(Celula *&viatura, Celula *&policiais, Celula *&pessoas);
@@ -15,8 +17,10 @@ int main() {
     Celula *policiais = NULL;
     Celula *pessoas = NULL;
 
-    Celula *viaturasEmUso = NULL;
-    Celula *policiaisDoDia = NULL;
+    Celula *ichamadasP = NULL, *fchamadasP = NULL, *ichamadasNP = NULL, *fchamadasNP = NULL;
+    Celula *chamadasEmAndamento = NULL;
+
+    Celula *viaturaAtual = NULL;
 
     lerArquivos(viaturas, policiais, pessoas);
 
@@ -25,11 +29,15 @@ int main() {
         scanf("%d", &op);
 
         if(op == 1) {
-            viaturaLogin(viaturas, policiais, pessoas, viaturasEmUso, policiaisDoDia);
+            viaturaLogin(viaturas, policiais, pessoas, viaturaAtual, chamadasEmAndamento);
         } else if(op == 2) {
-            if(viaturasEmUso != NULL) {
-                //viaturaNeutro(viaturasEmUso, policiaisDoDia, );
-            }
+            viaturaNeutro(viaturaAtual, pessoas, chamadasEmAndamento);
+        } else if(op == 3) {
+            criarChamadaPolicial(ichamadasP,fchamadasP,ichamadasNP, fchamadasNP, viaturas);
+            distribuirChamada(
+                ichamadasP, fchamadasP, ichamadasP, ichamadasNP, 
+                viaturas, chamadasEmAndamento
+            );
         }
         
 
@@ -38,6 +46,8 @@ int main() {
     desalocar(viaturas);
     desalocar(policiais);
     desalocar(pessoas);
+    desalocar(ichamadasP);
+    desalocar(ichamadasNP);
 }
 
 void menu() {

@@ -25,7 +25,7 @@ void viaturaPrisao(Celula *pessoas, int &x) {
         printf("1 - Confirmar retorno da DP\n");
         printf("2 - Voltar para o Menu Principal\n");
         scanf("%d", &op);
-        if(op == 1) {
+        if(op == 2) {
             x = 4;
             return;
         }

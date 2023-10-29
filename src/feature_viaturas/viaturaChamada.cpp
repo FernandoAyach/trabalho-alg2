@@ -5,7 +5,7 @@
 void menuChamada(char *&descricao, char *&localizacao, int &acaoPolicial);
 void menuOcorrencia(int &op);
 
-void viaturaChamada(Celula *pessoas) {
+void viaturaChamada(Celula *pessoas, Celula *&viaturaAtual) {
     char *descricao = (char *) calloc(1, sizeof(char)), *localizacao = (char *) calloc(1, sizeof(char));
     int acaoPolicial, op;
 
@@ -19,6 +19,7 @@ void viaturaChamada(Celula *pessoas) {
         } else if(op == 2) {
             viaturaSolicitarReforcos();
         } else if(op == 3) {
+            ((Viatura *)viaturaAtual->d)->status = INDISPONIVEL;
             viaturaPrisao(pessoas, op);
         }
     } while(op != 4); 
