@@ -19,8 +19,10 @@ void viaturaLogin(
     scanf("%d", &tipoPolicia);
 
     menuDadosViatura(codigo, quantPM);
+    
     bool invalido = (tipoPolicia == 1 && (quantPM < 2 || quantPM > 4)) || 
     (tipoPolicia == 2 && (quantPM != 4));
+
     while(invalido) {
         printf("\nAutorização de embarque negada: número de PMs inválido\n");
         menuDadosViatura(codigo, quantPM);

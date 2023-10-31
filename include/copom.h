@@ -1,7 +1,7 @@
 #pragma once
 
 #include "linked_list.h"
-#include  "viatura.h"
+#include "viatura.h"
 
 struct Chamada {
     char tipoPolicia[TIPO_VIATURA];
@@ -9,7 +9,7 @@ struct Chamada {
     int viaturasNecessarias;
     char *descricao;
     char *localizacao;
-    char codigoViatura[COD_VIATURA];
+    char **codigoViatura;
 };
 
 void criarChamadaPolicial(

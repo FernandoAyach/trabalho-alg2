@@ -40,12 +40,14 @@ void menuNeutro(int &op) {
 
 bool temChamadas(Celula *viaturaAtual, Celula *chamadasEmAndamento) {
     while(chamadasEmAndamento != NULL) {
-        if(
-            strcmp(
-                ((Viatura *)viaturaAtual->d)->codigo, 
-                ((Chamada *)chamadasEmAndamento->d)->codigoViatura
-            ) == 0
-        ) return true;
+        for(int i = 0; i < ((Chamada *)chamadasEmAndamento->d)->viaturasNecessarias; i++) {
+             if(
+                strcmp(
+                    ((Viatura *)viaturaAtual->d)->codigo, 
+                    ((Chamada *)chamadasEmAndamento->d)->codigoViatura[i]
+                ) == 0
+            ) return true;
+        }
     }
     return false;
 }

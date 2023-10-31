@@ -10,9 +10,26 @@
 void inserirInicio(Celula *&lst, void *d) {
     Celula *n = (Celula *) calloc(1, sizeof(Celula));
     n->d = d;
-
     n->prox = lst;
     lst = n;
+}
+
+void removerViatura(Celula *&lst, char codigo[COD_VIATURA+1]) {
+    Celula *p = NULL, *q = lst;
+    
+    while(q != NULL && strcmp(((Viatura *)q->d)->codigo, codigo) != 0) {
+        q = q->prox;
+    }
+
+    if(q != NULL) {
+        if(p == NULL) {
+            lst = lst->prox;
+            free(q);
+        } else {
+            p->prox = q->prox;
+            free(q);
+        }
+    }
 }
 
 Celula *buscarViatura(Celula *lst, char codigo[COD_VIATURA+1]) {

@@ -31,7 +31,7 @@ int main() {
         if(op == 1) {
             viaturaLogin(viaturas, policiais, pessoas, viaturaAtual, chamadasEmAndamento);
         } else if(op == 2) {
-            viaturaNeutro(viaturaAtual, pessoas, chamadasEmAndamento);
+            viaturaEmUso(viaturaAtual, pessoas, chamadasEmAndamento);
         } else if(op == 3) {
             criarChamadaPolicial(ichamadasP,fchamadasP,ichamadasNP, fchamadasNP, viaturas);
             distribuirChamada(
@@ -39,8 +39,6 @@ int main() {
                 viaturas, chamadasEmAndamento
             );
         }
-        
-
     } while(op != 0);
 
     desalocar(viaturas);

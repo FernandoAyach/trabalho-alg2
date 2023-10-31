@@ -20,13 +20,11 @@ Celula* desenfileirar(Celula *&i, Celula *&f) {
 
     if(i == NULL) return NULL;
 
-    aux = i;
-    removido = aux;
+    aux = removido = i;
     i = i->prox;
     free(aux);
     
-    if(i == NULL) {
-        f = NULL;
-    }
+    if(i == NULL) f = NULL;
+    
     return removido;
 }
