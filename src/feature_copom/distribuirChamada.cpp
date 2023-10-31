@@ -4,6 +4,7 @@
 
 #include "../../include/copom.h"
 #include "../../include/fila.h"
+#include "../../include/viatura.h"
 
 void filtrarViaturas(Celula *lista, Celula *&preliminares, Chamada *chamada);
 Viatura *obterViatura(Celula *preliminares);

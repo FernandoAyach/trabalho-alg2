@@ -7,7 +7,7 @@
 #include "../../include/copom.h"
 
 void menuNeutro(int &op);
-bool temChamadas(Celula *viaturaAtual, Celula *chamadasEmAndamento);
+Celula* obterChamada(Celula *viaturaAtual, Celula *chamadasEmAndamento);
 
 void viaturaNeutro(Celula *&viaturaAtual, Celula *pessoas, Celula *chamadasEmAndamento) {
     int op;
@@ -15,10 +15,11 @@ void viaturaNeutro(Celula *&viaturaAtual, Celula *pessoas, Celula *chamadasEmAnd
     do {
         menuNeutro(op);
         if(op == 1) {
-            if(temChamadas(viaturaAtual, chamadasEmAndamento)) {
+           Celula *chamada = obterChamada(viaturaAtual, chamadasEmAndamento);
+            if(chamada != NULL) {
                 ((Viatura *)viaturaAtual->d)->status = CHAMADA;
                 ((Viatura *)viaturaAtual->d)->nOcorrencias++;
-                viaturaChamada(pessoas, viaturaAtual);
+                viaturaChamada(pessoas, viaturaAtual, chamada);
             } else {
                 ((Viatura *)viaturaAtual->d)->status = LIVRE;
                 viaturaRonda(op);
@@ -38,16 +39,16 @@ void menuNeutro(int &op) {
     scanf("%d", &op);
 }
 
-bool temChamadas(Celula *viaturaAtual, Celula *chamadasEmAndamento) {
+Celula* obterChamada(Celula *viaturaAtual, Celula *chamadasEmAndamento) {
     while(chamadasEmAndamento != NULL) {
         for(int i = 0; i < ((Chamada *)chamadasEmAndamento->d)->viaturasNecessarias; i++) {
-             if(
+            if(
                 strcmp(
                     ((Viatura *)viaturaAtual->d)->codigo, 
                     ((Chamada *)chamadasEmAndamento->d)->codigoViatura[i]
                 ) == 0
-            ) return true;
+            ) return chamadasEmAndamento;
         }
     }
-    return false;
+    return NULL;
 }

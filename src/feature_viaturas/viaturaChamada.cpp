@@ -1,12 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "../../include/viatura.h"
+#include "../../include/copom.h"
 
 void menuChamada(char *&descricao, char *&localizacao, int &acaoPolicial);
 void menuOcorrencia(int &op);
 
-void viaturaChamada(Celula *pessoas, Celula *&viaturaAtual) {
-    char *descricao = (char *) calloc(1, sizeof(char)), *localizacao = (char *) calloc(1, sizeof(char));
+void viaturaChamada(Celula *pessoas, Celula *&viaturaAtual, Celula *chamada) {
+    char *descricao = ((Chamada *)chamada->d)->descricao;
+    char* localizacao = ((Chamada *)chamada->d)->localizacao;
     int acaoPolicial, op;
 
     menuChamada(descricao, localizacao, acaoPolicial);
@@ -28,9 +31,9 @@ void viaturaChamada(Celula *pessoas, Celula *&viaturaAtual) {
 void menuChamada(char *&descricao, char *&localizacao, int &acaoPolicial) {
     printf("\nSPM - Viatura Chamada Policial\n\n");
     printf("Descrição: ");
-    scanf(" %[^\n]", descricao);
+    printf("%s\n", descricao);
     printf("Localização: ");
-    scanf(" %[^\n]", localizacao);
+    printf("%s\n", localizacao);
     printf("Confirmada Ação Policial - 1    Ação Policial Dispensada - 2\n");
     scanf("%d", &acaoPolicial);
 }

@@ -1,4 +1,5 @@
 #pragma once
+
 #include "linked_list.h"
 
 #define COD_VIATURA 3
@@ -27,7 +28,7 @@ void viaturaLogin(
 );
 void viaturaNeutro(Celula *&viaturaAtual, Celula *pessoas, Celula *chamadasEmAndamento);
 void viaturaRonda(int &op);
-void viaturaChamada(Celula *pessoas, Celula *&viaturaAtual);
+void viaturaChamada(Celula *pessoas, Celula *&viaturaAtual, Celula *chamada);
 void viaturaBuscarCpf(Celula *pessoas);
 void viaturaSolicitarReforcos();
 void viaturaPrisao(Celula *pessoas, int &x);

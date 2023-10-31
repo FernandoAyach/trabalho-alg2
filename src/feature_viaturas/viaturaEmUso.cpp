@@ -7,7 +7,7 @@
 #include "../../include/copom.h"
 
 void menuUso(char codigo[COD_VIATURA]);
-bool temChamadas(Celula *viaturaAtual, Celula *chamadasEmAndamento);
+Celula* obterChamada(Celula *viaturaAtual, Celula *chamadasEmAndamento);
 
 void viaturaEmUso(Celula *&viaturaAtual, Celula *pessoas, Celula *chamadasEmAndamento) {
     char codigo[COD_VIATURA];
@@ -16,8 +16,9 @@ void viaturaEmUso(Celula *&viaturaAtual, Celula *pessoas, Celula *chamadasEmAnda
     menuUso(codigo);
 
     if(strcmp(codigo, ((Viatura *)viaturaAtual->d)->codigo) == 0) {
-        if(temChamadas(viaturaAtual, chamadasEmAndamento)) {
-            viaturaChamada(pessoas, viaturaAtual);
+        Celula *chamada = obterChamada(viaturaAtual, chamadasEmAndamento);
+        if(chamada != NULL) {
+            viaturaChamada(pessoas, viaturaAtual, chamada);
         } else {
             viaturaRonda(op);
         }
