@@ -8,6 +8,7 @@
 
 void menuNeutro(int &op);
 Celula* obterChamada(Celula *viaturaAtual, Celula *chamadasEmAndamento);
+void desalocarViatura(Celula *&viaturaAtual);
 
 void viaturaNeutro(Celula *&viaturaAtual, Celula *pessoas, Celula *chamadasEmAndamento) {
     int op;
@@ -28,13 +29,7 @@ void viaturaNeutro(Celula *&viaturaAtual, Celula *pessoas, Celula *chamadasEmAnd
         }
     } while(op != 2);
 
-    ((Viatura *)viaturaAtual->d)->status = NAO_APTO;
-
-    for(int i = 0; i < ((Viatura *)viaturaAtual->d)->nPoliciais; i++) {
-        free(((Viatura *)viaturaAtual->d)->policiais[i]);
-    }
-    free(((Viatura *)viaturaAtual->d)->policiais);
-    viaturaAtual = NULL;
+    desalocarViatura(viaturaAtual);
 }
 
 void menuNeutro(int &op) {
@@ -57,4 +52,12 @@ Celula* obterChamada(Celula *viaturaAtual, Celula *chamadasEmAndamento) {
         chamadasEmAndamento = chamadasEmAndamento->prox;
     }
     return NULL;
+}
+
+void desalocarViatura(Celula *&viaturaAtual) {
+    ((Viatura *)viaturaAtual->d)->status = NAO_APTO;
+    for(int i = 0; i < ((Viatura *)viaturaAtual->d)->nPoliciais; i++) {
+        free(((Viatura *)viaturaAtual->d)->policiais[i]);
+    }
+    viaturaAtual = NULL;
 }

@@ -15,6 +15,11 @@ void viaturaEmUso(Celula *&viaturaAtual, Celula *pessoas, Celula *chamadasEmAnda
     
     menuUso(codigo);
 
+    if(viaturaAtual == NULL) {
+        printf("Essa viatura não está em uso!\n");
+        return;
+    }
+
     if(strcmp(codigo, ((Viatura *)viaturaAtual->d)->codigo) == 0) {
 
         if(((Viatura *)viaturaAtual->d)->status == INDISPONIVEL) {

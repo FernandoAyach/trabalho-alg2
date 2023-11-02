@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <cstring>
 
 #include "../../include/linked_list.h"
 #include "../../include/policial.h"
@@ -7,11 +8,16 @@
 
 void menuTipoPolicia();
 void menuDadosViatura(char codigo[COD_VIATURA+1], int &quantPM);
+void desalocarViatura(Celula *&viaturaAtual);
 
 void viaturaLogin(
     Celula *&viaturas, Celula *&policiais, Celula *pessoas, Celula *&viaturaAtual,
     Celula *chamadasEmAndamento
 ) {
+    if(viaturaAtual != NULL) {
+        desalocarViatura(viaturaAtual);
+    }
+    
     int tipoPolicia, quantPM;
     char codigo[COD_VIATURA+1];
 
@@ -37,18 +43,13 @@ void viaturaLogin(
     char nomeGuerra[MAX];
     Celula *policial;
     ((Viatura *)viatura->d)->nPoliciais = quantPM;
-    ((Viatura *)viatura->d)->policiais = (char **) calloc(quantPM, sizeof(char *));
     printf("Identificação dos PMS:\n");
     for(int i = 0; i < quantPM; i++) {
         scanf(" %[^\n]", nomeGuerra);
         policial = buscarPolicial(policiais, nomeGuerra);
-
-        if(policial != NULL) {
-            ((Viatura *)viatura->d)->policiais[i] = (char *) calloc(quantPM, sizeof(char));
-            ((Viatura *)viatura->d)->policiais[i] = ((Policial *)policial->d)->CPF; 
-        } else {
-            printf("Policial não existe!\n");
-        }
+        ((Viatura *)viatura->d)->policiais[i] = (char *) calloc(1, sizeof(char));
+        if(policial != NULL) strcpy(((Viatura *)viatura->d)->policiais[i], nomeGuerra); 
+        else printf("Policial não existe!\n");
     }
     
     viaturaNeutro(viaturaAtual, pessoas, chamadasEmAndamento);

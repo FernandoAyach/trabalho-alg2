@@ -3,6 +3,7 @@
 #include "linked_list.h"
 
 #define COD_VIATURA 3
+#define MAX_POLICIAIS 4
 #define TIPO_VIATURA 13
 #define PATH_VIATURA "D:\\Usuario\\Desktop\\Central\\Codes\\ufms\\alg2\\spm\\arquivos_entrada\\viaturas.txt"
 #define TIPO_REGULAR "regular"
@@ -14,7 +15,7 @@ struct Viatura {
     char codigo[COD_VIATURA+1];
     char tipo[TIPO_VIATURA+1];
     int nPoliciais = 0;
-    char **policiais;
+    char *policiais[MAX_POLICIAIS];
     int nOcorrencias = 0;
     Status status = NAO_APTO;
 };

@@ -27,6 +27,7 @@ void viaturaChamada(Celula *pessoas, Celula *&viaturaAtual, Celula *chamada, Cel
         }
     } while(op != 4); 
 
+    ((Viatura *)viaturaAtual->d)->status = LIVRE;
     desalocar(chamadasEmAndamento);
 }
 
