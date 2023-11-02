@@ -7,13 +7,20 @@
 void menuChamada(char *&descricao, char *&localizacao, int &acaoPolicial);
 void menuOcorrencia(int &op);
 
-void viaturaChamada(Celula *pessoas, Celula *&viaturaAtual, Celula *chamada, Celula *chamadasEmAndamento) {
+void viaturaChamada(
+    Celula *pessoas, Celula *&viaturaAtual, Celula *chamada, 
+    Celula *&chamadasEmAndamento, Celula *viaturas
+) {
     char *descricao = ((Chamada *)chamada->d)->descricao;
     char* localizacao = ((Chamada *)chamada->d)->localizacao;
     int acaoPolicial, op;
 
     menuChamada(descricao, localizacao, acaoPolicial);
-    if(acaoPolicial == 2) return;
+    
+    if(acaoPolicial == 2) {
+        removerChamada(chamadasEmAndamento, ((Viatura *)viaturaAtual->d)->codigo, viaturas);
+        return;
+    }
 
     do {
         menuOcorrencia(op);
@@ -27,8 +34,7 @@ void viaturaChamada(Celula *pessoas, Celula *&viaturaAtual, Celula *chamada, Cel
         }
     } while(op != 4); 
 
-    ((Viatura *)viaturaAtual->d)->status = LIVRE;
-    desalocar(chamadasEmAndamento);
+    removerChamada(chamadasEmAndamento, ((Viatura *)viaturaAtual->d)->codigo, viaturas);
 }
 
 void menuChamada(char *&descricao, char *&localizacao, int &acaoPolicial) {

@@ -6,12 +6,27 @@
 #include "../../include/policial.h"
 #include "../../include/pessoa.h"
 #include "../../include/linked_list.h"
+#include "../../include/copom.h"
 
 void inserirInicio(Celula *&lst, void *d) {
     Celula *n = (Celula *) calloc(1, sizeof(Celula));
     n->d = d;
     n->prox = lst;
     lst = n;
+}
+
+void inserirFim(Celula *&lst, void *d) {
+    Celula *n = (Celula *) calloc(1, sizeof(Celula)), *q = lst;
+    n->d = d;
+
+    if(q == NULL) {
+        lst = n;
+        return;
+    }
+    
+    while(q->prox != NULL) q = q->prox;
+
+    q->prox = n;
 }
 
 void removerViatura(Celula *&lst, char codigo[COD_VIATURA+1]) {
@@ -30,6 +45,42 @@ void removerViatura(Celula *&lst, char codigo[COD_VIATURA+1]) {
             free(q);
         }
     }
+}
+
+void removerChamada(Celula *&lst, char codigo[COD_VIATURA+1], Celula *viaturas) {
+    Celula *p = NULL, *q = lst;
+    Chamada *chamada;
+    int i;
+
+    while(q != NULL) {
+        chamada = ((Chamada *)q->d);
+        i = 0; 
+        while(
+            i < chamada->viaturasNecessarias && strcmp(chamada->codigoViatura[i], codigo) != 0
+        ) {
+            i++;
+        }
+
+        if(i < chamada->viaturasNecessarias) break;
+        p = q;
+        q = q->prox;
+    }
+
+    if(q != NULL) {
+        Celula *viatura;
+        for(int i = 0; i < chamada->viaturasNecessarias; i++) {
+            viatura = buscarViatura(viaturas, chamada->codigoViatura[i]);
+            ((Viatura *)viatura->d)->status = LIVRE;
+        }
+
+        if(p == NULL) lst = lst->prox;
+        else p->prox = q->prox;
+        free(q);
+    } else {
+        printf("Não há chamadas para esta viatura!\n");
+    }
+
+
 }
 
 Celula *buscarViatura(Celula *lst, char codigo[COD_VIATURA+1]) {

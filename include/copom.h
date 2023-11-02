@@ -23,3 +23,9 @@ void distribuirChamada(
     Celula *&ichamadasNP, Celula *&fchamadasNP,
     Celula *viaturas, Celula *&chamadasEmAndamento
 );
+
+void removerChamada(
+    Celula *&chamadasEmAndamento, 
+    char codigo[COD_VIATURA],
+    Celula *viaturas
+);

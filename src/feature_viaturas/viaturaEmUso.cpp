@@ -9,7 +9,7 @@
 void menuUso(char codigo[COD_VIATURA]);
 Celula* obterChamada(Celula *viaturaAtual, Celula *chamadasEmAndamento);
 
-void viaturaEmUso(Celula *&viaturaAtual, Celula *pessoas, Celula *chamadasEmAndamento) {
+void viaturaEmUso(Celula *&viaturaAtual, Celula *pessoas, Celula *&chamadasEmAndamento, Celula *viaturas) {
     char codigo[COD_VIATURA];
     int op;
     
@@ -28,12 +28,15 @@ void viaturaEmUso(Celula *&viaturaAtual, Celula *pessoas, Celula *chamadasEmAnda
             return;
         }
 
-        Celula *chamada = obterChamada(viaturaAtual, chamadasEmAndamento);
-        if(chamada != NULL) {
-            viaturaChamada(pessoas, viaturaAtual, chamada, chamadasEmAndamento);
-        } else {
-            viaturaRonda(op);
-        }
+        if(((Viatura *)viaturaAtual->d)->status == CHAMADA) {
+            Celula *chamada = obterChamada(viaturaAtual, chamadasEmAndamento);
+            if(chamada != NULL) {
+                viaturaChamada(pessoas, viaturaAtual, chamada, chamadasEmAndamento, viaturas);
+                return;
+            }
+        } 
+        viaturaRonda(op);
+
     } else {
         printf("Código não condiz com a viatura atual\n");
     }

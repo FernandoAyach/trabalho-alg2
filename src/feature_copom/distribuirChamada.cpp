@@ -19,7 +19,7 @@ void distribuirChamada(
 
     if(ichamadasP != NULL) c = desenfileirar(ichamadasP, fchamadasP);
     else c = desenfileirar(ichamadasNP, fchamadasNP);
-    
+
     Chamada *chamada = (Chamada *)c->d;
 
     filtrarViaturas(viaturas, preliminares, chamada);
@@ -55,7 +55,7 @@ void distribuirChamada(
         ((Viatura *)aux->d)->status = CHAMADA;
         chamada->codigoViatura[i] = (char *) calloc(1, sizeof(char));
         strcpy(chamada->codigoViatura[i], ((Viatura *)aux->d)->codigo);
-        inserirInicio(chamadasEmAndamento, chamada);
+        inserirFim(chamadasEmAndamento, chamada);
         i++;
         aux = aux->prox;
     }

@@ -12,12 +12,8 @@ void desalocarViatura(Celula *&viaturaAtual);
 
 void viaturaLogin(
     Celula *&viaturas, Celula *&policiais, Celula *pessoas, Celula *&viaturaAtual,
-    Celula *chamadasEmAndamento
+    Celula *&chamadasEmAndamento
 ) {
-    if(viaturaAtual != NULL) {
-        desalocarViatura(viaturaAtual);
-    }
-    
     int tipoPolicia, quantPM;
     char codigo[COD_VIATURA+1];
 
@@ -52,7 +48,7 @@ void viaturaLogin(
         else printf("Policial não existe!\n");
     }
     
-    viaturaNeutro(viaturaAtual, pessoas, chamadasEmAndamento);
+    viaturaNeutro(viaturaAtual, pessoas, chamadasEmAndamento, viaturas);
 }
 
 void menuTipoPolicia() {
