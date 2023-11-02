@@ -7,7 +7,7 @@
 void menuChamada(char *&descricao, char *&localizacao, int &acaoPolicial);
 void menuOcorrencia(int &op);
 
-void viaturaChamada(Celula *pessoas, Celula *&viaturaAtual, Celula *chamada) {
+void viaturaChamada(Celula *pessoas, Celula *&viaturaAtual, Celula *chamada, Celula *chamadasEmAndamento) {
     char *descricao = ((Chamada *)chamada->d)->descricao;
     char* localizacao = ((Chamada *)chamada->d)->localizacao;
     int acaoPolicial, op;
@@ -26,6 +26,8 @@ void viaturaChamada(Celula *pessoas, Celula *&viaturaAtual, Celula *chamada) {
             viaturaPrisao(pessoas, op);
         }
     } while(op != 4); 
+
+    desalocar(chamadasEmAndamento);
 }
 
 void menuChamada(char *&descricao, char *&localizacao, int &acaoPolicial) {
@@ -46,4 +48,3 @@ void menuOcorrencia(int &op) {
     printf("4 - Encerrar Ocorrência\n");
     scanf("%d", &op);
 }
-

@@ -19,7 +19,7 @@ void viaturaNeutro(Celula *&viaturaAtual, Celula *pessoas, Celula *chamadasEmAnd
             if(chamada != NULL) {
                 ((Viatura *)viaturaAtual->d)->status = CHAMADA;
                 ((Viatura *)viaturaAtual->d)->nOcorrencias++;
-                viaturaChamada(pessoas, viaturaAtual, chamada);
+                viaturaChamada(pessoas, viaturaAtual, chamada, chamadasEmAndamento);
             } else {
                 ((Viatura *)viaturaAtual->d)->status = LIVRE;
                 viaturaRonda(op);
@@ -49,6 +49,7 @@ Celula* obterChamada(Celula *viaturaAtual, Celula *chamadasEmAndamento) {
                 ) == 0
             ) return chamadasEmAndamento;
         }
+        chamadasEmAndamento = chamadasEmAndamento->prox;
     }
     return NULL;
 }

@@ -17,9 +17,9 @@ void distribuirChamada(
     Celula *preliminares = NULL, *finalistas = NULL, *aux, *c;
     int i;
 
-    if(ichamadasP != NULL) c = desenfileirar(ichamadasP,fchamadasP);
-    else c = desenfileirar(ichamadasNP,fchamadasNP);
-
+    if(ichamadasP != NULL) c = desenfileirar(ichamadasP, fchamadasP);
+    else c = desenfileirar(ichamadasNP, fchamadasNP);
+    
     Chamada *chamada = (Chamada *)c->d;
 
     filtrarViaturas(viaturas, preliminares, chamada);
@@ -36,7 +36,8 @@ void distribuirChamada(
             printf("Sem viaturas disponíveis!\n");
             return;
         }
-        inserirInicio(finalistas, escolhida);  
+        inserirInicio(finalistas, escolhida); 
+
         removerViatura(preliminares, escolhida->codigo);
     }
 

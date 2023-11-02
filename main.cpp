@@ -35,7 +35,7 @@ int main() {
         } else if(op == 3) {
             criarChamadaPolicial(ichamadasP,fchamadasP,ichamadasNP, fchamadasNP, viaturas);
             distribuirChamada(
-                ichamadasP, fchamadasP, ichamadasP, ichamadasNP, 
+                ichamadasP, fchamadasP, ichamadasNP, ichamadasNP, 
                 viaturas, chamadasEmAndamento
             );
         }

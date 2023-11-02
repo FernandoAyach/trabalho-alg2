@@ -28,7 +28,7 @@ void viaturaLogin(
 );
 void viaturaNeutro(Celula *&viaturaAtual, Celula *pessoas, Celula *chamadasEmAndamento);
 void viaturaRonda(int &op);
-void viaturaChamada(Celula *pessoas, Celula *&viaturaAtual, Celula *chamada);
+void viaturaChamada(Celula *pessoas, Celula *&viaturaAtual, Celula *chamada, Celula *chamadasEmAndamento);
 void viaturaBuscarCpf(Celula *pessoas);
 void viaturaSolicitarReforcos();
 void viaturaPrisao(Celula *pessoas, int &x);

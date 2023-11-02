@@ -18,7 +18,7 @@ void viaturaEmUso(Celula *&viaturaAtual, Celula *pessoas, Celula *chamadasEmAnda
     if(strcmp(codigo, ((Viatura *)viaturaAtual->d)->codigo) == 0) {
         Celula *chamada = obterChamada(viaturaAtual, chamadasEmAndamento);
         if(chamada != NULL) {
-            viaturaChamada(pessoas, viaturaAtual, chamada);
+            viaturaChamada(pessoas, viaturaAtual, chamada, chamadasEmAndamento);
         } else {
             viaturaRonda(op);
         }
