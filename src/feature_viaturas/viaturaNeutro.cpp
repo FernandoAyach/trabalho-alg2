@@ -28,8 +28,13 @@ void viaturaNeutro(Celula *&viaturaAtual, Celula *pessoas, Celula *chamadasEmAnd
         }
     } while(op != 2);
 
-    
-    //desalocar policiais viatura
+    ((Viatura *)viaturaAtual->d)->status = NAO_APTO;
+
+    for(int i = 0; i < ((Viatura *)viaturaAtual->d)->nPoliciais; i++) {
+        free(((Viatura *)viaturaAtual->d)->policiais[i]);
+    }
+    free(((Viatura *)viaturaAtual->d)->policiais);
+    viaturaAtual = NULL;
 }
 
 void menuNeutro(int &op) {

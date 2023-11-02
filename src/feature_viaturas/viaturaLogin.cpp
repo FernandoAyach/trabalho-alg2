@@ -36,6 +36,7 @@ void viaturaLogin(
    
     char nomeGuerra[MAX];
     Celula *policial;
+    ((Viatura *)viatura->d)->nPoliciais = quantPM;
     ((Viatura *)viatura->d)->policiais = (char **) calloc(quantPM, sizeof(char *));
     printf("Identificação dos PMS:\n");
     for(int i = 0; i < quantPM; i++) {

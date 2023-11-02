@@ -13,6 +13,7 @@ enum Status {NAO_APTO, LIVRE, INDISPONIVEL, CHAMADA};
 struct Viatura {
     char codigo[COD_VIATURA+1];
     char tipo[TIPO_VIATURA+1];
+    int nPoliciais = 0;
     char **policiais;
     int nOcorrencias = 0;
     Status status = NAO_APTO;

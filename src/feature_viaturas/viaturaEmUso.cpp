@@ -16,6 +16,13 @@ void viaturaEmUso(Celula *&viaturaAtual, Celula *pessoas, Celula *chamadasEmAnda
     menuUso(codigo);
 
     if(strcmp(codigo, ((Viatura *)viaturaAtual->d)->codigo) == 0) {
+
+        if(((Viatura *)viaturaAtual->d)->status == INDISPONIVEL) {
+            op = 7;
+            viaturaPrisao(pessoas, op);
+            return;
+        }
+
         Celula *chamada = obterChamada(viaturaAtual, chamadasEmAndamento);
         if(chamada != NULL) {
             viaturaChamada(pessoas, viaturaAtual, chamada, chamadasEmAndamento);

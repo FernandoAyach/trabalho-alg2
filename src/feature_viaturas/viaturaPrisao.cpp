@@ -7,17 +7,19 @@
 void viaturaPrisao(Celula *pessoas, int &x) {
     int n, op;
     char cpf[CPF_SIZE+1];
+    
+    if(x != 7) {
+        printf("\nSPM - Viatura: Prisão em Andamento\n\n");
+        printf("Indivíduo(s) conduzido(s) para DP: ");
+        scanf("%d", &n);
+        printf("CPFs:\n");
 
-    printf("\nSPM - Viatura: Prisão em Andamento\n\n");
-    printf("Indivíduo(s) conduzido(s) para DP: ");
-    scanf("%d", &n);
-    printf("CPFs:\n");
-
-    Celula **presos = (Celula **) calloc(n, sizeof(Celula *));
-    for(int i = 0; i < n; i++) {
-        scanf(" %[^\n]", cpf);
-        Celula *pessoa = buscarPessoa(pessoas, cpf);
-        presos[i] = pessoa;
+        Celula **presos = (Celula **) calloc(n, sizeof(Celula *));
+        for(int i = 0; i < n; i++) {
+            scanf(" %[^\n]", cpf);
+            Celula *pessoa = buscarPessoa(pessoas, cpf);
+            presos[i] = pessoa;
+        }
     }
 
     do {
