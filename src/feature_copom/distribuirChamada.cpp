@@ -29,7 +29,7 @@ void distribuirChamada(
         return;
     }
 
-    for(i = 0; i < chamada->viaturasNecessarias; i++) {
+    for(i = 0; i < chamada->viaturasNecessarias && preliminares != NULL; i++) {
         Viatura *escolhida = obterViatura(preliminares);
 
         if(escolhida == NULL) {
@@ -42,7 +42,7 @@ void distribuirChamada(
     }
 
     if(i < chamada->viaturasNecessarias) {
-        printf("Não foram encontradas viaturas suficentes!\n");
+        printf("Não foram encontradas viaturas suficientes!\n");
         desalocar(preliminares);
         desalocar(finalistas);
         return;
@@ -53,13 +53,15 @@ void distribuirChamada(
     chamada->codigoViatura = (char **) calloc(1, sizeof(char *));
     while(aux != NULL) {
         ((Viatura *)aux->d)->status = CHAMADA;
-        printf("%s\n", ((Viatura *)aux->d)->codigo);
+        //printf("%s\n", ((Viatura *)aux->d)->codigo);
         chamada->codigoViatura[i] = (char *) calloc(1, sizeof(char));
         strcpy(chamada->codigoViatura[i], ((Viatura *)aux->d)->codigo);
         inserirFim(chamadasEmAndamento, chamada);
         i++;
         aux = aux->prox;
     }
+
+     printf("distribuiu a chamada\n");
 
     desalocar(preliminares);
     desalocar(finalistas);
