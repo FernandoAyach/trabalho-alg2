@@ -4,7 +4,7 @@
 #include "viatura.h"
 
 struct Chamada {
-    char tipoPolicia[TIPO_VIATURA];
+    char tipoPolicia[TIPO_VIATURA+1];
     bool prioritaria;
     int viaturasNecessarias;
     char *descricao;

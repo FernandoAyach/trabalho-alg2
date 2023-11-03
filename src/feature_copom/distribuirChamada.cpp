@@ -53,6 +53,7 @@ void distribuirChamada(
     chamada->codigoViatura = (char **) calloc(1, sizeof(char *));
     while(aux != NULL) {
         ((Viatura *)aux->d)->status = CHAMADA;
+        printf("%s\n", ((Viatura *)aux->d)->codigo);
         chamada->codigoViatura[i] = (char *) calloc(1, sizeof(char));
         strcpy(chamada->codigoViatura[i], ((Viatura *)aux->d)->codigo);
         inserirFim(chamadasEmAndamento, chamada);

@@ -106,7 +106,7 @@ Celula *buscarPessoa(Celula *lst, char CPF[CPF_SIZE+1]) {
 
 void imprimirViaturas(Celula *lst) {
     while(lst != NULL) {
-        printf("Viatura %s\n", ((Viatura *)lst->d)->codigo);
+        printf("Viatura %s\n", ((Viatura *)lst->d)->tipo);
         lst = lst->prox;
     }
 }
