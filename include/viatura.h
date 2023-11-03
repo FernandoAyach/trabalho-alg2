@@ -26,9 +26,15 @@ void removerViatura(Celula *&lst, char codigo[COD_VIATURA+1]);
 void lerArquivoViaturas(Celula *&viaturas);
 void viaturaLogin(
     Celula *&viaturas, Celula *&policiais, Celula *pessoas, 
-    Celula *&viaturaAtual, Celula *&chamadasEmAndamento
+    Celula *&viaturaAtual, Celula *&chamadasEmAndamento,
+    Celula *&ichamadasP, Celula *&fchamadasP,
+    Celula *&ichamadasNP, Celula *&fchamadasNP
 );
-void viaturaNeutro(Celula *&viaturaAtual, Celula *pessoas, Celula *&chamadasEmAndamento, Celula *viaturas);
+void viaturaNeutro(
+    Celula *&viaturaAtual, Celula *pessoas, Celula *&chamadasEmAndamento, Celula *viaturas,
+    Celula *&ichamadasP, Celula *&fchamadasP,
+    Celula *&ichamadasNP, Celula *&fchamadasNP
+);
 void viaturaRonda(int &op);
 void viaturaChamada(
     Celula *pessoas, Celula *&viaturaAtual, Celula *chamada, 

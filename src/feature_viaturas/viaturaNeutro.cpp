@@ -10,12 +10,19 @@ void menuNeutro(int &op);
 Celula* obterChamada(Celula *viaturaAtual, Celula *chamadasEmAndamento);
 void desalocarViatura(Celula *&viaturaAtual);
 
-void viaturaNeutro(Celula *&viaturaAtual, Celula *pessoas, Celula *&chamadasEmAndamento, Celula *viaturas) {
+void viaturaNeutro(
+    Celula *&viaturaAtual, Celula *pessoas, Celula *&chamadasEmAndamento, Celula *viaturas,
+    Celula *&ichamadasP, Celula *&fchamadasP, Celula *&ichamadasNP, Celula *&fchamadasNP
+) {
     int op;
     
     do {
         menuNeutro(op);
         if(op == 1) {
+            ((Viatura *)viaturaAtual->d)->status = LIVRE;
+            distribuirChamada(
+                ichamadasP, fchamadasP, ichamadasNP, fchamadasNP, viaturas, chamadasEmAndamento
+            );
             if(((Viatura *)viaturaAtual->d)->status == CHAMADA) {
                 Celula *chamada = obterChamada(viaturaAtual, chamadasEmAndamento);
                 if(chamada != NULL) {
@@ -25,7 +32,6 @@ void viaturaNeutro(Celula *&viaturaAtual, Celula *pessoas, Celula *&chamadasEmAn
                     return;
                 }
             }
-            ((Viatura *)viaturaAtual->d)->status = LIVRE;
             viaturaRonda(op);
             if(op == 3) return;
         }
@@ -42,16 +48,17 @@ void menuNeutro(int &op) {
 }
 
 Celula* obterChamada(Celula *viaturaAtual, Celula *chamadasEmAndamento) {
-    while(chamadasEmAndamento != NULL) {
-        for(int i = 0; i < ((Chamada *)chamadasEmAndamento->d)->viaturasNecessarias; i++) {
+    Celula *aux = chamadasEmAndamento;
+    while(aux != NULL) {
+        for(int i = 0; i < ((Chamada *)aux->d)->viaturasNecessarias; i++) {
             if(
                 strcmp(
                     ((Viatura *)viaturaAtual->d)->codigo, 
-                    ((Chamada *)chamadasEmAndamento->d)->codigoViatura[i]
+                    ((Chamada *)aux->d)->codigoViatura[i]
                 ) == 0
-            ) return chamadasEmAndamento;
+            ) return aux;
         }
-        chamadasEmAndamento = chamadasEmAndamento->prox;
+        aux = aux->prox;
     }
     return NULL;
 }

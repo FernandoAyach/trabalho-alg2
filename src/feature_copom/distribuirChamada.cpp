@@ -17,15 +17,15 @@ void distribuirChamada(
     Celula *preliminares = NULL, *finalistas = NULL, *aux, *c;
     int i;
 
-    if(ichamadasP != NULL) c = desenfileirar(ichamadasP, fchamadasP);
-    else c = desenfileirar(ichamadasNP, fchamadasNP);
+    if(ichamadasP != NULL) c = ichamadasP;
+    else c = ichamadasNP;
 
     Chamada *chamada = (Chamada *)c->d;
 
     filtrarViaturas(viaturas, preliminares, chamada);
    
     if(preliminares == NULL) {
-        printf("Sem viaturas desse tipo disponíveis!\n");
+        printf("\nSem viaturas desse tipo disponíveis!\n");
         return;
     }
 
@@ -33,7 +33,7 @@ void distribuirChamada(
         Viatura *escolhida = obterViatura(preliminares);
 
         if(escolhida == NULL) {
-            printf("Sem viaturas disponíveis!\n");
+            printf("\nSem viaturas disponíveis!\n");
             return;
         }
         inserirInicio(finalistas, escolhida); 
@@ -42,7 +42,7 @@ void distribuirChamada(
     }
 
     if(i < chamada->viaturasNecessarias) {
-        printf("Não foram encontradas viaturas suficientes!\n");
+        printf("\nNão foram encontradas viaturas suficientes!\n");
         desalocar(preliminares);
         desalocar(finalistas);
         return;
@@ -61,7 +61,8 @@ void distribuirChamada(
         aux = aux->prox;
     }
 
-     printf("distribuiu a chamada\n");
+    if(ichamadasP != NULL) desenfileirar(ichamadasP, fchamadasP);
+    else desenfileirar(ichamadasNP, fchamadasNP);
 
     desalocar(preliminares);
     desalocar(finalistas);

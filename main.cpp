@@ -29,7 +29,10 @@ int main() {
         scanf("%d", &op);
 
         if(op == 1) {
-            viaturaLogin(viaturas, policiais, pessoas, viaturaAtual, chamadasEmAndamento);
+            viaturaLogin(
+                viaturas, policiais, pessoas, viaturaAtual, chamadasEmAndamento, 
+                ichamadasP, fchamadasP,ichamadasNP, fchamadasNP
+            );
         } else if(op == 2) {
             viaturaEmUso(viaturaAtual, pessoas, chamadasEmAndamento, viaturas);
         } else if(op == 3) {
