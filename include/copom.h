@@ -3,6 +3,8 @@
 #include "linked_list.h"
 #include "viatura.h"
 
+#define PATH_OCORRENCIA "D:\\Usuario\\Desktop\\Central\\Codes\\ufms\\alg2\\spm\\arquivos_saida\\ocorrencias.txt"
+
 struct Chamada {
     char tipoPolicia[TIPO_VIATURA+1];
     bool prioritaria;
@@ -29,3 +31,5 @@ void removerChamada(
     char codigo[COD_VIATURA],
     Celula *viaturas
 );
+
+void registrarOcorrencia(Chamada *chamada, Celula *viaturas);

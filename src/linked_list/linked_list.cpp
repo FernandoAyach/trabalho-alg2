@@ -76,6 +76,8 @@ void removerChamada(Celula *&lst, char codigo[COD_VIATURA+1], Celula *viaturas) 
             printf("Viatura envolvida: %s\n",  ((Viatura *)viatura->d)->codigo);
         }
 
+        registrarOcorrencia(chamada, viaturas);
+
         if(p != NULL) {
             p->prox = q->prox;
             free(q);
@@ -85,9 +87,9 @@ void removerChamada(Celula *&lst, char codigo[COD_VIATURA+1], Celula *viaturas) 
             free(q);
             printf("Deletou no começo\n");
         }
-        
         printf("Deletou\n");
-        imprimirChamadas(lst);
+        
+        //imprimirChamadas(lst);
     } else {
         printf("Não há chamadas para esta viatura!\n");
     }
