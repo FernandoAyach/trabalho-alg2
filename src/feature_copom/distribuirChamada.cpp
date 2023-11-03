@@ -67,12 +67,8 @@ void distribuirChamada(
 
     if(ichamadasP != NULL) desenfileirar(ichamadasP, fchamadasP);
     else desenfileirar(ichamadasNP, fchamadasNP);
-
-    printf("AAAA0\n");
-    desalocar(preliminares);
-    printf("AAAA1\n");
+    
     desalocar(finalistas);
-    printf("AAAA2\n");
 }
 
 void filtrarViaturas(Celula *lista, Celula *&preliminares, Chamada *chamada) {

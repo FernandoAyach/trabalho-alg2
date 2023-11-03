@@ -142,12 +142,11 @@ void imprimirChamadas(Celula *lst) {
     }
 }
 
-
 void desalocar(Celula *&lst) {
     Celula *aux;
     while(lst != NULL) {
         aux = lst;
-        free(aux);
         lst = lst->prox;
+        free(aux);
     }
 }

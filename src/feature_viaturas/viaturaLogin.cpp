@@ -35,7 +35,10 @@ void viaturaLogin(
 
     Celula *viatura = buscarViatura(viaturas, codigo);
     if(viatura != NULL) viaturaAtual = viatura;
-    else printf("Viatura não existe!\n");
+    else {
+        printf("Viatura não existe!\n");
+        return;
+    }
    
     char nomeGuerra[MAX];
     Celula *policial;
