@@ -15,6 +15,11 @@ void viaturaChamada(
     char* localizacao = ((Chamada *)chamada->d)->localizacao;
     int acaoPolicial, op;
 
+    for(int i = 0; i < ((Chamada *)chamada->d)->viaturasNecessarias; i++) {
+        Celula *viatura = buscarViatura(viaturas, ((Chamada *)chamada->d)->codigoViatura[i]);
+        ((Viatura *)viatura->d)->nOcorrencias++;
+    }
+
     menuChamada(descricao, localizacao, acaoPolicial);
     
     if(acaoPolicial == 2) {

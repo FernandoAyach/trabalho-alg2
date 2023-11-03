@@ -20,6 +20,11 @@ void distribuirChamada(
     if(ichamadasP != NULL) c = ichamadasP;
     else c = ichamadasNP;
 
+    if(c == NULL) {
+        printf("Não há chamadas\n");
+        return;
+    }
+
     Chamada *chamada = (Chamada *)c->d;
 
     filtrarViaturas(viaturas, preliminares, chamada);
@@ -36,7 +41,7 @@ void distribuirChamada(
             printf("\nSem viaturas disponíveis!\n");
             return;
         }
-        inserirInicio(finalistas, escolhida); 
+        inserirFim(finalistas, escolhida); 
 
         removerViatura(preliminares, escolhida->codigo);
     }
@@ -52,20 +57,22 @@ void distribuirChamada(
     i = 0;
     chamada->codigoViatura = (char **) calloc(1, sizeof(char *));
     while(aux != NULL) {
-        ((Viatura *)aux->d)->status = CHAMADA;
-        //printf("%s\n", ((Viatura *)aux->d)->codigo);
+        printf("%s\n", ((Viatura *)aux->d)->codigo);
         chamada->codigoViatura[i] = (char *) calloc(1, sizeof(char));
         strcpy(chamada->codigoViatura[i], ((Viatura *)aux->d)->codigo);
-        inserirFim(chamadasEmAndamento, chamada);
         i++;
         aux = aux->prox;
     }
+    inserirFim(chamadasEmAndamento, chamada);
 
     if(ichamadasP != NULL) desenfileirar(ichamadasP, fchamadasP);
     else desenfileirar(ichamadasNP, fchamadasNP);
 
+    printf("AAAA0\n");
     desalocar(preliminares);
+    printf("AAAA1\n");
     desalocar(finalistas);
+    printf("AAAA2\n");
 }
 
 void filtrarViaturas(Celula *lista, Celula *&preliminares, Chamada *chamada) {
@@ -74,7 +81,7 @@ void filtrarViaturas(Celula *lista, Celula *&preliminares, Chamada *chamada) {
             ((Viatura *)lista->d)->status == LIVRE &&
             strcmp(chamada->tipoPolicia, ((Viatura *)lista->d)->tipo) == 0
         ) {
-            inserirInicio(preliminares, ((Viatura *)lista->d));
+            inserirFim(preliminares, ((Viatura *)lista->d));
         }
         lista = lista->prox;
     }

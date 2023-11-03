@@ -19,7 +19,7 @@ void viaturaNeutro(
     do {
         menuNeutro(op);
         if(op == 1) {
-            ((Viatura *)viaturaAtual->d)->status = LIVRE;
+            //((Viatura *)viaturaAtual->d)->status = LIVRE;
             distribuirChamada(
                 ichamadasP, fchamadasP, ichamadasNP, fchamadasNP, viaturas, chamadasEmAndamento
             );
@@ -27,11 +27,11 @@ void viaturaNeutro(
                 Celula *chamada = obterChamada(viaturaAtual, chamadasEmAndamento);
                 if(chamada != NULL) {
                     ((Viatura *)viaturaAtual->d)->status = CHAMADA;
-                    ((Viatura *)viaturaAtual->d)->nOcorrencias++;
                     viaturaChamada(pessoas, viaturaAtual, chamada, chamadasEmAndamento, viaturas);
                     return;
                 }
             }
+            ((Viatura *)viaturaAtual->d)->status = LIVRE;
             viaturaRonda(op);
             if(op == 3) return;
         }
@@ -50,6 +50,7 @@ void menuNeutro(int &op) {
 Celula* obterChamada(Celula *viaturaAtual, Celula *chamadasEmAndamento) {
     Celula *aux = chamadasEmAndamento;
     while(aux != NULL) {
+        printf("Chamada %s\n", ((Chamada *)aux->d)->descricao);
         for(int i = 0; i < ((Chamada *)aux->d)->viaturasNecessarias; i++) {
             if(
                 strcmp(

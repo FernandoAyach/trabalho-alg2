@@ -28,13 +28,13 @@ void viaturaEmUso(Celula *&viaturaAtual, Celula *pessoas, Celula *&chamadasEmAnd
             return;
         }
 
-        if(((Viatura *)viaturaAtual->d)->status == CHAMADA) {
-            Celula *chamada = obterChamada(viaturaAtual, chamadasEmAndamento);
-            if(chamada != NULL) {
-                viaturaChamada(pessoas, viaturaAtual, chamada, chamadasEmAndamento, viaturas);
-                return;
-            }
-        } 
+        Celula *chamada = obterChamada(viaturaAtual, chamadasEmAndamento);
+        if(chamada != NULL) {
+            ((Viatura *)viaturaAtual->d)->status = CHAMADA;
+            viaturaChamada(pessoas, viaturaAtual, chamada, chamadasEmAndamento, viaturas);
+            return;
+        }
+
         viaturaRonda(op);
 
     } else {

@@ -65,22 +65,32 @@ void removerChamada(Celula *&lst, char codigo[COD_VIATURA+1], Celula *viaturas) 
         p = q;
         q = q->prox;
     }
+    printf("Achou a chamada\n");
+    printf("Chamada a ser deletada %s\n", chamada->descricao);
 
     if(q != NULL) {
         Celula *viatura;
         for(int i = 0; i < chamada->viaturasNecessarias; i++) {
             viatura = buscarViatura(viaturas, chamada->codigoViatura[i]);
             ((Viatura *)viatura->d)->status = LIVRE;
+            printf("Viatura envolvida: %s\n",  ((Viatura *)viatura->d)->codigo);
         }
 
-        if(p == NULL) lst = lst->prox;
-        else p->prox = q->prox;
-        free(q);
+        if(p != NULL) {
+            p->prox = q->prox;
+            free(q);
+            printf("Deletou no meio\n");
+        }else {
+            lst = q->prox;
+            free(q);
+            printf("Deletou no começo\n");
+        }
+        
+        printf("Deletou\n");
+        imprimirChamadas(lst);
     } else {
         printf("Não há chamadas para esta viatura!\n");
     }
-
-
 }
 
 Celula *buscarViatura(Celula *lst, char codigo[COD_VIATURA+1]) {
@@ -124,6 +134,14 @@ void imprimirPessoas(Celula *lst) {
         lst = lst->prox;
     }
 }
+
+void imprimirChamadas(Celula *lst) {
+    while(lst != NULL) {
+        printf("Chamada %s %d\n", ((Chamada *)lst->d)->descricao, ((Chamada *)lst->d)->viaturasNecessarias);
+        lst = lst->prox;
+    }
+}
+
 
 void desalocar(Celula *&lst) {
     Celula *aux;

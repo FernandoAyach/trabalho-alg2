@@ -11,3 +11,4 @@ void desalocar(Celula *&lst);
 void imprimirViaturas(Celula *lst);
 void imprimirPoliciais(Celula *lst);
 void imprimirPessoas(Celula *lst);
+void imprimirChamadas(Celula *lst);
