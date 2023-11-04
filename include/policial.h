@@ -18,3 +18,5 @@ struct Policial {
 void lerArquivoPoliciais(Celula *&policiais);
 
 Celula *buscarPolicial(Celula *lst, char nomeGuerra[MAX+1]);
+
+void login(Celula *policiais);

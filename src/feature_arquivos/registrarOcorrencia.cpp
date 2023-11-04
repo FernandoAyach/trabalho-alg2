@@ -8,7 +8,7 @@
 
 void registrarOcorrencia(Chamada *chamada, Celula *viaturas) {
     FILE *pArq;
-    pArq = fopen(PATH_OCORRENCIA, "w");
+    pArq = fopen(PATH_OCORRENCIA, "a");
 
     printf("Abriu arquivo\n");
 

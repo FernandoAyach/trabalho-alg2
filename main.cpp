@@ -44,6 +44,8 @@ int main() {
                 ichamadasP, fchamadasP, ichamadasNP, ichamadasNP, 
                 viaturas, chamadasEmAndamento
             );
+        } else if(op == 4) {
+            login(policiais);
         }
     } while(op != 0);
 
