@@ -19,18 +19,19 @@ void viaturaNeutro(
     do {
         menuNeutro(op);
         if(op == 1) {
-            //((Viatura *)viaturaAtual->d)->status = LIVRE;
+            ((Viatura *)viaturaAtual->d)->status = LIVRE;
+            imprimirChamadas(chamadasEmAndamento);
             distribuirChamada(
                 ichamadasP, fchamadasP, ichamadasNP, fchamadasNP, viaturas, chamadasEmAndamento
             );
-            if(((Viatura *)viaturaAtual->d)->status == CHAMADA) {
-                Celula *chamada = obterChamada(viaturaAtual, chamadasEmAndamento);
-                if(chamada != NULL) {
-                    ((Viatura *)viaturaAtual->d)->status = CHAMADA;
-                    viaturaChamada(pessoas, viaturaAtual, chamada, chamadasEmAndamento, viaturas);
-                    return;
-                }
+           
+            Celula *chamada = obterChamada(viaturaAtual, chamadasEmAndamento);
+            if(chamada != NULL) {
+                ((Viatura *)viaturaAtual->d)->status = CHAMADA;
+                viaturaChamada(pessoas, viaturaAtual, chamada, chamadasEmAndamento, viaturas);
+                return;
             }
+            
             ((Viatura *)viaturaAtual->d)->status = LIVRE;
             viaturaRonda(op);
             if(op == 3) return;
@@ -49,6 +50,20 @@ void menuNeutro(int &op) {
 
 Celula* obterChamada(Celula *viaturaAtual, Celula *chamadasEmAndamento) {
     Celula *aux = chamadasEmAndamento;
+    while(aux != NULL) {
+        printf("Chamada %s\n", ((Chamada *)aux->d)->descricao);
+        for(int i = 0; i < ((Chamada *)aux->d)->viaturasNecessarias; i++) {
+            if(
+                strcmp(
+                    ((Viatura *)viaturaAtual->d)->codigo, 
+                    ((Chamada *)aux->d)->codigoViatura[i]
+                ) == 0
+                && ((Chamada *)aux->d)->prioritaria
+            ) return aux;
+        }
+        aux = aux->prox;
+    }
+    aux = chamadasEmAndamento;
     while(aux != NULL) {
         printf("Chamada %s\n", ((Chamada *)aux->d)->descricao);
         for(int i = 0; i < ((Chamada *)aux->d)->viaturasNecessarias; i++) {

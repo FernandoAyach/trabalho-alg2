@@ -1,0 +1,6 @@
+Tipo Policia: regular
+Descricao: nao prioritaria
+Localizacao: campo grande
+Policial Tigre
+Policial Cobra
+
