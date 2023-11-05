@@ -18,7 +18,7 @@ void fscanfPolicial(
 
 void lerArquivoPoliciais(Celula *&policiais) {
     FILE *pArq;
-    char nome[MAX+1];
+    char *nome = (char *) calloc(MAX, sizeof(char));
     char CPF[CPF_SIZE+1];
     char nomeGuerra[MAX+1];
     char cidade[MAX+1];
@@ -33,9 +33,10 @@ void lerArquivoPoliciais(Celula *&policiais) {
         return;
     }
 
+    Policial *policial;
     fscanfPolicial(pArq, nome, CPF, nomeGuerra, cidade, idade, cargo, senha);  
     while(feof(pArq) == 0) {
-        Policial *policial = (Policial *) calloc(1, sizeof(Policial));
+        policial = (Policial *) calloc(1, sizeof(Policial));
         strcpy(policial->nome, nome);
         strcpy(policial->CPF, CPF);
         strcpy(policial->nomeGuerra, nomeGuerra);
@@ -44,7 +45,7 @@ void lerArquivoPoliciais(Celula *&policiais) {
         strcpy(policial->cargo, cargo);
         strcpy(policial->senha, senha);
 
-        inserirInicio(policiais, policial);
+        inserirFim(policiais, policial);
         fscanfPolicial(pArq, nome, CPF, nomeGuerra, cidade, idade, cargo, senha);  
     }
 }
@@ -58,7 +59,7 @@ void fscanfPolicial(
     int &idade,
     char cargo[MAX+1],
     char senha[MAX+1]
-) {
+) { 
     fscanf(pArq, " %[^\n]", nome);
     fscanf(pArq, " %s", CPF);
     fscanf(pArq, " %[^\n]", nomeGuerra);

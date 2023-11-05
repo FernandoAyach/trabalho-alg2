@@ -47,7 +47,7 @@ void removerViatura(Celula *&lst, char codigo[COD_VIATURA+1]) {
     }
 }
 
-void removerChamada(Celula *&lst, char codigo[COD_VIATURA+1], Celula *viaturas) {
+void removerChamada(Celula *&lst, char codigo[COD_VIATURA+1], Celula *viaturas, Celula *&chamadasFinalizadas) {
     Celula *p = NULL, *q = lst;
     Chamada *chamada;
     int i;
@@ -75,8 +75,7 @@ void removerChamada(Celula *&lst, char codigo[COD_VIATURA+1], Celula *viaturas) 
             ((Viatura *)viatura->d)->status = LIVRE;
             printf("Viatura envolvida: %s\n",  ((Viatura *)viatura->d)->codigo);
         }
-
-        registrarOcorrencia(chamada, viaturas);
+        inserirFim(chamadasFinalizadas, chamada);
 
         if(p != NULL) {
             p->prox = q->prox;
@@ -125,7 +124,7 @@ void imprimirViaturas(Celula *lst) {
 
 void imprimirPoliciais(Celula *lst) {
     while(lst != NULL) {
-        printf("Policial %s\n", ((Policial *)lst->d)->nomeGuerra);
+        printf("Policial %s %s\n", ((Policial *)lst->d)->nome, ((Policial *)lst->d)->CPF);
         lst = lst->prox;
     }
 }

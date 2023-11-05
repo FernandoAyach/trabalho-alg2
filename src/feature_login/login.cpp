@@ -6,7 +6,7 @@
 
 void descriptografar(char senha[MAX], char sdi[MAX]);
 
-void login(Celula *policiais) {
+Celula* login(Celula *policiais) {
     char nomeGuerra[MAX], senha[MAX], sdi[MAX];
 
     printf("Digite o nome de guerra: ");
@@ -17,23 +17,24 @@ void login(Celula *policiais) {
 
     if(policial == NULL) {
         printf("Este policial não existe!\n");
-        return;
+        return policial;
     }
 
     descriptografar(((Policial*)policial->d)->senha, sdi);
     if(strcmp(senha, sdi) == 0) {
         printf("Login realizado com sucesso!\n");
-        return;
+        return policial;
     }
 
     printf("Senha errada!\n");
+    return NULL;
 }
 
 void descriptografar(char senha[MAX], char sdi[MAX]) {
     char sd[MAX];
     strcpy(sd, senha); 
     int len = strlen(senha), k = 0;
-    //gnutx5cwdhz
+    //k0u9t5hj98e
 
     for(int i = 0; i < len; i++) {
         if(sd[i] >= 'A' && sd[i] <= 'Z') {

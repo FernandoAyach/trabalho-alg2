@@ -43,7 +43,7 @@ void lerArquivoPessoas(Celula *&pessoas) {
             strcpy(pessoa->inadimplencias[i], inadimplencias[i]);
         }
         
-        inserirInicio(pessoas, pessoa);
+        inserirFim(pessoas, pessoa);
         x = fscanfPessoa(pArq, nome, CPF, cidade, passagensPolicia, inadimplencias);  
     }
 }

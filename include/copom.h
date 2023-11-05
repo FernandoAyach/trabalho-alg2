@@ -12,6 +12,7 @@ struct Chamada {
     char *descricao;
     char *localizacao;
     char **codigoViatura;
+    bool temBoletim = false;
 };
 
 void criarChamadaPolicial(
@@ -29,7 +30,8 @@ void distribuirChamada(
 void removerChamada(
     Celula *&chamadasEmAndamento, 
     char codigo[COD_VIATURA],
-    Celula *viaturas
+    Celula *viaturas,
+    Celula *&chamadasFinalizadas
 );
 
-void registrarOcorrencia(Chamada *chamada, Celula *viaturas);
+void registrarOcorrencia(Chamada *chamada, Celula *viaturas, Celula *&chamadasFinalizadas);

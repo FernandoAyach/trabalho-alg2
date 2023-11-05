@@ -28,19 +28,25 @@ void viaturaLogin(
     Celula *&viaturas, Celula *&policiais, Celula *pessoas, 
     Celula *&viaturaAtual, Celula *&chamadasEmAndamento,
     Celula *&ichamadasP, Celula *&fchamadasP,
-    Celula *&ichamadasNP, Celula *&fchamadasNP
+    Celula *&ichamadasNP, Celula *&fchamadasNP,
+    Celula *&chamadasFinalizadas
 );
 void viaturaNeutro(
     Celula *&viaturaAtual, Celula *pessoas, Celula *&chamadasEmAndamento, Celula *viaturas,
     Celula *&ichamadasP, Celula *&fchamadasP,
-    Celula *&ichamadasNP, Celula *&fchamadasNP
+    Celula *&ichamadasNP, Celula *&fchamadasNP,
+    Celula *&chamadasFinalizadas
 );
 void viaturaRonda(int &op);
 void viaturaChamada(
     Celula *pessoas, Celula *&viaturaAtual, Celula *chamada, 
-    Celula *&chamadasEmAndamento, Celula *viaturas
+    Celula *&chamadasEmAndamento, Celula *viaturas,
+    Celula *&chamadasFinalizadas
 );
 void viaturaBuscarCpf(Celula *pessoas);
 void viaturaSolicitarReforcos();
 void viaturaPrisao(Celula *pessoas, int &x);
-void viaturaEmUso(Celula *&viaturaAtual, Celula *pessoas, Celula *&chamadasEmAndamento, Celula *viaturas);
+void viaturaEmUso(
+    Celula *&viaturaAtual, Celula *pessoas, Celula *&chamadasEmAndamento, Celula *viaturas,
+    Celula *&chamadasFinalizadas
+);

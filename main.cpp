@@ -19,6 +19,7 @@ int main() {
 
     Celula *ichamadasP = NULL, *fchamadasP = NULL, *ichamadasNP = NULL, *fchamadasNP = NULL;
     Celula *chamadasEmAndamento = NULL;
+    Celula *chamadasFinalizadas = NULL;
 
     Celula *viaturaAtual = NULL;
 
@@ -31,13 +32,14 @@ int main() {
         if(op == 1) {
             viaturaLogin(
                 viaturas, policiais, pessoas, viaturaAtual, chamadasEmAndamento, 
-                ichamadasP, fchamadasP,ichamadasNP, fchamadasNP
+                ichamadasP, fchamadasP,ichamadasNP, fchamadasNP,
+                chamadasFinalizadas
             );
         } else if(op == 2) {
             distribuirChamada(
                 ichamadasP, fchamadasP, ichamadasNP, fchamadasNP, viaturas, chamadasEmAndamento
             );
-            viaturaEmUso(viaturaAtual, pessoas, chamadasEmAndamento, viaturas);
+            viaturaEmUso(viaturaAtual, pessoas, chamadasEmAndamento, viaturas, chamadasFinalizadas);
         } else if(op == 3) {
             criarChamadaPolicial(ichamadasP,fchamadasP,ichamadasNP, fchamadasNP, viaturas);
             distribuirChamada(
@@ -45,7 +47,8 @@ int main() {
                 viaturas, chamadasEmAndamento
             );
         } else if(op == 4) {
-            login(policiais);
+            Celula *policial = login(policiais);
+            if(policial != NULL) telaPm(policial, chamadasFinalizadas, viaturas);
         }
     } while(op != 0);
 
@@ -54,6 +57,7 @@ int main() {
     desalocar(pessoas);
     desalocar(ichamadasP);
     desalocar(ichamadasNP);
+    desalocar(chamadasEmAndamento);
 }
 
 void menu() {
@@ -67,9 +71,9 @@ void menu() {
 
 void lerArquivos(Celula *&viaturas, Celula *&policiais, Celula *&pessoas) {
     lerArquivoViaturas(viaturas);
-    lerArquivoPoliciais(policiais);
-    lerArquivoPessoas(pessoas);
     //imprimirViaturas(viaturas);
+    lerArquivoPoliciais(policiais);
     //imprimirPoliciais(policiais);
+    lerArquivoPessoas(pessoas);
     //imprimirPessoas(pessoas);
 }

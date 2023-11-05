@@ -9,7 +9,10 @@
 void menuUso(char codigo[COD_VIATURA]);
 Celula* obterChamada(Celula *viaturaAtual, Celula *chamadasEmAndamento);
 
-void viaturaEmUso(Celula *&viaturaAtual, Celula *pessoas, Celula *&chamadasEmAndamento, Celula *viaturas) {
+void viaturaEmUso(
+    Celula *&viaturaAtual, Celula *pessoas, Celula *&chamadasEmAndamento, Celula *viaturas,
+    Celula *&chamadasFinalizadas
+) {
     char codigo[COD_VIATURA];
     int op;
     
@@ -31,7 +34,9 @@ void viaturaEmUso(Celula *&viaturaAtual, Celula *pessoas, Celula *&chamadasEmAnd
         Celula *chamada = obterChamada(viaturaAtual, chamadasEmAndamento);
         if(chamada != NULL) {
             ((Viatura *)viaturaAtual->d)->status = CHAMADA;
-            viaturaChamada(pessoas, viaturaAtual, chamada, chamadasEmAndamento, viaturas);
+            viaturaChamada(
+                pessoas, viaturaAtual, chamada, chamadasEmAndamento, viaturas, chamadasFinalizadas
+            );
             return;
         }
 

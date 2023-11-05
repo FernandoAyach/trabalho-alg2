@@ -23,7 +23,7 @@ void lerArquivoViaturas(Celula *&viaturas) {
         Viatura *v = (Viatura *) calloc(1, sizeof(Viatura));
         strcpy(v->codigo, codigo);
         strcpy(v->tipo, tipo);
-        inserirInicio(viaturas, v);
+        inserirFim(viaturas, v);
 
         fscanf(pArq, "%s", codigo);
         fscanf(pArq, "%s", tipo);

@@ -12,7 +12,8 @@ void desalocarViatura(Celula *&viaturaAtual);
 
 void viaturaNeutro(
     Celula *&viaturaAtual, Celula *pessoas, Celula *&chamadasEmAndamento, Celula *viaturas,
-    Celula *&ichamadasP, Celula *&fchamadasP, Celula *&ichamadasNP, Celula *&fchamadasNP
+    Celula *&ichamadasP, Celula *&fchamadasP, Celula *&ichamadasNP, Celula *&fchamadasNP,
+    Celula *&chamadasFinalizadas
 ) {
     int op;
     
@@ -28,7 +29,9 @@ void viaturaNeutro(
             Celula *chamada = obterChamada(viaturaAtual, chamadasEmAndamento);
             if(chamada != NULL) {
                 ((Viatura *)viaturaAtual->d)->status = CHAMADA;
-                viaturaChamada(pessoas, viaturaAtual, chamada, chamadasEmAndamento, viaturas);
+                viaturaChamada(
+                    pessoas, viaturaAtual, chamada, chamadasEmAndamento, viaturas, chamadasFinalizadas
+                );
                 return;
             }
             
