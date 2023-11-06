@@ -19,11 +19,15 @@ void viaturaBuscarCpf(Celula *pessoas) {
             printf("%s, ", ((Pessoa *)pessoa->d)->nome);
             printf("%s, ", ((Pessoa *)pessoa->d)->CPF);
             printf("%s\n", ((Pessoa *)pessoa->d)->cidade);
-            printf("Passagens pela polícia: %d\n", ((Pessoa *)pessoa->d)->passagensPolicia);
+            printf("%d\n", ((Pessoa *)pessoa->d)->idade);
 
-            int n = ((Pessoa *)pessoa->d)->nInadimplencias;
+            printf("Passagens pela polícia: \n");
+            for(int i = 0; i < ((Pessoa *)pessoa->d)->passagensPolicia; i++) {
+                printf("%s\n", ((Pessoa *)pessoa->d)->passagens[i]);
+            }
 
-            for(int i = 0; i < n; i++) {
+            printf("Inadimplências: \n");
+            for(int i = 0; i < ((Pessoa *)pessoa->d)->nInadimplencias; i++) {
                 printf("%s\n", ((Pessoa *)pessoa->d)->inadimplencias[i]);
             }
         } else {

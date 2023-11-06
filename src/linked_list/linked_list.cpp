@@ -87,8 +87,6 @@ void removerChamada(Celula *&lst, char codigo[COD_VIATURA+1], Celula *viaturas, 
             printf("Deletou no começo\n");
         }
         printf("Deletou\n");
-        
-        //imprimirChamadas(lst);
     } else {
         printf("Não há chamadas para esta viatura!\n");
     }
@@ -131,7 +129,7 @@ void imprimirPoliciais(Celula *lst) {
 
 void imprimirPessoas(Celula *lst) {
     while(lst != NULL) {
-        printf("Pessoa %s %d\n", ((Pessoa *)lst->d)->nome, ((Pessoa *)lst->d)->passagensPolicia);
+        printf("Pessoa %s %d\n", ((Pessoa *)lst->d)->nome, ((Pessoa *)lst->d)->idade);
         lst = lst->prox;
     }
 }

@@ -75,5 +75,5 @@ void lerArquivos(Celula *&viaturas, Celula *&policiais, Celula *&pessoas) {
     lerArquivoPoliciais(policiais);
     //imprimirPoliciais(policiais);
     lerArquivoPessoas(pessoas);
-    //imprimirPessoas(pessoas);
+    imprimirPessoas(pessoas);
 }

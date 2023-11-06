@@ -9,9 +9,11 @@ struct Pessoa {
     char nome[MAX+1];
     char CPF[CPF_SIZE+1];
     char cidade[MAX+1];
+    int idade;
     int passagensPolicia;
-    char inadimplencias[MAX][MAX];
+    char passagens[MAX][MAX];
     int nInadimplencias;
+    char inadimplencias[MAX][MAX];
 };
 
 void lerArquivoPessoas(Celula *&pessoas);

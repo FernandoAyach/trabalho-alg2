@@ -5,12 +5,15 @@
 #include "../../include/pessoa.h"
 #include "../../include/linked_list.h"
 
-int fscanfPessoa(
+void fscanfPessoa(
     FILE *pArq,
     char nome[MAX+1],
     char CPF[CPF_SIZE+1],
     char cidade[MAX+1],
+    int &idade,
     int &passagensPolicia,
+    char passagens[MAX][MAX],
+    int &nInadimplencias,
     char inadimplencias[MAX][MAX]
 );
 
@@ -19,9 +22,11 @@ void lerArquivoPessoas(Celula *&pessoas) {
     char nome[MAX+1];
     char CPF[CPF_SIZE+1];
     char cidade[MAX+1];
+    int idade;
     int passagensPolicia;
+    char passagens[MAX][MAX];
+    int nInadimplencias;
     char inadimplencias[MAX][MAX];
-    int x;
 
     pArq = fopen(PATH_PESSOA, "r");
 
@@ -30,46 +35,58 @@ void lerArquivoPessoas(Celula *&pessoas) {
         return;
     }
 
-    x = fscanfPessoa(pArq, nome, CPF, cidade, passagensPolicia, inadimplencias);  
+    fscanfPessoa(
+        pArq, nome, CPF, cidade, idade, passagensPolicia, passagens, nInadimplencias, inadimplencias
+    );  
     while(feof(pArq) == 0) {
         Pessoa *pessoa = (Pessoa *) calloc(1, sizeof(Pessoa));
         strcpy(pessoa->nome, nome);
         strcpy(pessoa->CPF, CPF);
         strcpy(pessoa->cidade, cidade);
+        pessoa->idade = idade;
         pessoa->passagensPolicia = passagensPolicia;
-        pessoa->nInadimplencias = x;
+        pessoa->nInadimplencias = nInadimplencias;
         
-        for(int i = 0; i < x; i++) {
+        for(int i = 0; i < passagensPolicia; i++) {
+            strcpy(pessoa->passagens[i], passagens[i]);
+        }
+
+        for(int i = 0; i < nInadimplencias; i++) {
             strcpy(pessoa->inadimplencias[i], inadimplencias[i]);
         }
         
         inserirFim(pessoas, pessoa);
-        x = fscanfPessoa(pArq, nome, CPF, cidade, passagensPolicia, inadimplencias);  
+        fscanfPessoa(
+            pArq, nome, CPF, cidade, idade, passagensPolicia, passagens, nInadimplencias, inadimplencias
+        );   
     }
 }
 
-int fscanfPessoa(
+void fscanfPessoa(
     FILE *pArq,
     char nome[MAX+1],
     char CPF[CPF_SIZE+1],
     char cidade[MAX+1],
+    int &idade,
     int &passagensPolicia,
+    char passagens[MAX][MAX],
+    int &nInadimplencias,
     char inadimplencias[MAX][MAX]
 ) { 
-    int ni, k = 0;
     fscanf(pArq, " %[^\n]", nome);
     fscanf(pArq, " %s", CPF);
     fscanf(pArq, " %[^\n]", cidade);
+    fscanf(pArq, "%d", &idade);
     fscanf(pArq, "%d", &passagensPolicia);
 
-    for(int j = 0; j < 2; j++) {
-        fscanf(pArq, "%d", &ni);
-       
-        for(int i = 0; i < ni; i++) {
-            fscanf(pArq, " %[^\n]", inadimplencias[k]);
-            k++;
-        }
+    for(int i = 0; i < passagensPolicia; i++) {
+        fscanf(pArq, " %[^\n]", passagens[i]);
     }
-    return k;
+
+    fscanf(pArq, "%d", &nInadimplencias);
+
+    for(int i = 0; i < nInadimplencias; i++) {
+        fscanf(pArq, " %[^\n]", inadimplencias[i]);
+    }
 }
 
