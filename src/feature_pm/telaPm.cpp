@@ -67,7 +67,7 @@ void fazerBoletins(Celula *chamadasDoPolicial, Celula *viaturas) {
         
         if(op == 1) {
             ((Chamada *)chamadasDoPolicial->d)->temBoletim = true;
-            //Função de registrar no arquivo
+            registrarOcorrencia((Chamada *)chamadasDoPolicial->d, viaturas);
             printf("\nBoletim registrado\n");
         } 
         chamadasDoPolicial = chamadasDoPolicial->prox;

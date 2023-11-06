@@ -34,4 +34,4 @@ void removerChamada(
     Celula *&chamadasFinalizadas
 );
 
-void registrarOcorrencia(Chamada *chamada, Celula *viaturas, Celula *&chamadasFinalizadas);
+void registrarOcorrencia(Chamada *chamada, Celula *viaturas);
