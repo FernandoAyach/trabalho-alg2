@@ -8,7 +8,6 @@
 void coletarChamadasDoPolicial(
     Celula *policial, Celula *chamadasFinalizadas, Celula *&chamadasDoPolicial, Celula *viaturas
 );
-
 void fazerBoletins(Celula *chamadasDoPolicial, Celula *viaturas);
 void imprimirChamadaDoPolicial(Celula *chamadaDoPolicial, Celula *viaturas);
 
@@ -22,18 +21,19 @@ void telaPm(Celula *policial, Celula *chamadasFinalizadas, Celula *viaturas) {
         return;
     }
 
+    printf("\nChamadas do polical: \n");
     fazerBoletins(chamadasDoPolicial, viaturas);
 }
 
 void coletarChamadasDoPolicial(
     Celula *policial, Celula *chamadasFinalizadas, Celula *&chamadasDoPolicial, Celula *viaturas
 ) {
-    Celula *aux = chamadasFinalizadas, *viatura;
+    Celula *viatura;
 
-    while(aux != NULL) {
-        if(!((Chamada *)aux->d)->temBoletim) {
-            for(int i = 0; i < ((Chamada *)aux->d)->viaturasNecessarias; i++) {
-                viatura = buscarViatura(viaturas, ((Chamada *)aux->d)->codigoViatura[i]);
+    while(chamadasFinalizadas != NULL) {
+        if(!(((Chamada *)chamadasFinalizadas->d)->temBoletim)) {
+            for(int i = 0; i < ((Chamada *)chamadasFinalizadas->d)->viaturasNecessarias; i++) {
+                viatura = buscarViatura(viaturas, ((Chamada *)chamadasFinalizadas->d)->codigoViatura[i]);
                 for(int j = 0; j < ((Viatura *)viatura->d)->nPoliciais; j++) {
                     if(
                         strcmp(
@@ -41,39 +41,38 @@ void coletarChamadasDoPolicial(
                             ((Viatura *)viatura->d)->policiais[j]
                         ) == 0
                     ) {
-                        inserirFim(chamadasDoPolicial, aux);
+                        inserirFim(chamadasDoPolicial, chamadasFinalizadas->d);
                     }
                 }
             }
         }
-        aux = aux->prox;
+        chamadasFinalizadas = chamadasFinalizadas->prox;
     }
 }
 
 void fazerBoletins(Celula *chamadasDoPolicial, Celula *viaturas) {
-    Celula *aux = chamadasDoPolicial;
     int op;
 
-    while(aux != NULL) {
-        aux = chamadasDoPolicial;
-        imprimirChamadaDoPolicial(aux, viaturas);
+    while(chamadasDoPolicial != NULL) {
+        imprimirChamadaDoPolicial(chamadasDoPolicial, viaturas);
 
         printf("1 - Gerar boletim    2 - Não gerar boletim   3 - Voltar ao Menu Principal\n");
         scanf("%d", &op);
         while(op != 1 && op != 2 && op != 3) {
-            printf("1 - Gerar boletim    2 - Não gerar boletim\n");
+            printf("1 - Gerar boletim    2 - Não gerar boletim   3 - Voltar ao Menu Principal\n");
             scanf("%d", &op);
         }
 
         if(op == 3) return;
         
         if(op == 1) {
-            ((Chamada *)aux->d)->temBoletim = true;
-            printf("Boletim registrado\n");
+            ((Chamada *)chamadasDoPolicial->d)->temBoletim = true;
+            //Função de registrar no arquivo
+            printf("\nBoletim registrado\n");
         } 
-        aux = aux->prox;
+        chamadasDoPolicial = chamadasDoPolicial->prox;
     }
-    printf("Não há mais ocorrências no nome do policial\n");
+    printf("\nNão há mais ocorrências no nome do policial\n");
     printf("1 - Voltar ao Menu Principal\n");
     scanf("%d", &op);
     while(op  != 1) {
@@ -86,7 +85,7 @@ void fazerBoletins(Celula *chamadasDoPolicial, Celula *viaturas) {
 void imprimirChamadaDoPolicial(Celula *chamadaDoPolicial, Celula *viaturas) {
     Chamada *chamada = (Chamada *)chamadaDoPolicial->d;
 
-    printf("Tipo Policia: %s\n", chamada->tipoPolicia);
+    printf("\nTipo Policia: %s\n", chamada->tipoPolicia);
     printf("Descricao: %s\n", chamada->descricao);
     printf("Localizacao: %s\n", chamada->localizacao);
     printf("Policiais:\n");

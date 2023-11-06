@@ -48,6 +48,7 @@ int main() {
             );
         } else if(op == 4) {
             Celula *policial = login(policiais);
+            printf("%s\n", ((Policial *)policial->d)->nome);
             if(policial != NULL) telaPm(policial, chamadasFinalizadas, viaturas);
         }
     } while(op != 0);
@@ -75,5 +76,5 @@ void lerArquivos(Celula *&viaturas, Celula *&policiais, Celula *&pessoas) {
     lerArquivoPoliciais(policiais);
     //imprimirPoliciais(policiais);
     lerArquivoPessoas(pessoas);
-    imprimirPessoas(pessoas);
+    //imprimirPessoas(pessoas);
 }
