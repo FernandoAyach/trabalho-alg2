@@ -8,7 +8,7 @@
 void imprimirChamadaDoPolicial(Celula *chamadaDoPolicial, Celula *viaturas);
 void excluirBoletins(Celula *chamadasFinalizadas, Celula *viaturas);
 
-void telaOficial(Celula *policial, Celula *chamadasFinalizadas, Celula *viaturas) {
+void telaOficial(Celula *chamadasFinalizadas, Celula *viaturas) {
     printf("\nSPM - Oficial\n");
     int op;
 
@@ -24,7 +24,6 @@ void telaOficial(Celula *policial, Celula *chamadasFinalizadas, Celula *viaturas
     if(op == 1) {
         excluirBoletins(chamadasFinalizadas, viaturas);
     }
-
 }
 
 void excluirBoletins(Celula *chamadasFinalizadas, Celula *viaturas) {

@@ -3,7 +3,8 @@
 #include "linked_list.h"
 #include "viatura.h"
 
-#define PATH_OCORRENCIA "D:\\Usuario\\Desktop\\Central\\Codes\\ufms\\alg2\\spm\\arquivos_saida\\ocorrencias.txt"
+#define PATH_BOLETIM "D:\\Usuario\\Desktop\\Central\\Codes\\ufms\\alg2\\spm\\arquivos_saida\\boletins.txt"
+#define PATH_OFICIO "D:\\Usuario\\Desktop\\Central\\Codes\\ufms\\alg2\\spm\\arquivos_saida\\oficio_ocorrencias.txt"
 
 struct Chamada {
     char tipoPolicia[TIPO_VIATURA+1];
@@ -36,3 +37,4 @@ void removerChamada(
 
 void registrarOcorrencia(Chamada *chamada, Celula *viaturas);
 void atualizarBoletins(Celula *chamadasFinalizadas, Celula *viaturas);
+void gerarOficio(Celula *chamadasFinalizadas, Celula *viaturas);

@@ -53,7 +53,11 @@ int main() {
         } else if(op == 5) {
             Celula *policial = login(policiais);
             printf("%s\n", ((Policial *)policial->d)->nome);
-            if(policial != NULL) telaOficial(policial, chamadasFinalizadas, viaturas);
+            if(policial != NULL) telaOficial(chamadasFinalizadas, viaturas);
+        } else if(op == 6) {
+            Celula *policial = login(policiais);
+            printf("%s\n", ((Policial *)policial->d)->nome);
+            if(policial != NULL) telaComandante(chamadasFinalizadas, viaturas);
         }
     } while(op != 0);
 

@@ -1,0 +1,15 @@
+Ocorrências -
+Tipo Policia: regular
+Descricao: Muito massa
+Localizacao: Aquidauana
+Policial Tigre
+Policial Cobra
+
+Tipo Policia: especializada
+Descricao: Barra pesada aqui
+Localizacao: Campo Grande
+Policial Tigre
+Policial Cobra
+Policial Pantera
+Policial Lobo
+

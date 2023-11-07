@@ -8,12 +8,12 @@
 
 void atualizarBoletins(Celula *chamadasFinalizadas, Celula *viaturas) {
     FILE *pArq;
-    pArq = fopen(PATH_OCORRENCIA, "w");
+    pArq = fopen(PATH_BOLETIM, "w");
 
     printf("Abriu arquivo\n");
 
     if(pArq == NULL) {
-        printf("[ERRO-ARQUIVOS]: Erro ao abrir ocorrencias.txt\n");
+        printf("[ERRO-ARQUIVOS]: Erro ao abrir boletins.txt\n");
         return;
     }
 

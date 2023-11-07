@@ -8,12 +8,12 @@
 
 void registrarOcorrencia(Chamada *chamada, Celula *viaturas) {
     FILE *pArq;
-    pArq = fopen(PATH_OCORRENCIA, "a");
+    pArq = fopen(PATH_BOLETIM, "a");
 
     printf("Abriu arquivo\n");
 
     if(pArq == NULL) {
-        printf("[ERRO-ARQUIVOS]: Erro ao abrir ocorrencias.txt\n");
+        printf("[ERRO-ARQUIVOS]: Erro ao abrir boletins.txt\n");
         return;
     }
 
