@@ -50,6 +50,10 @@ int main() {
             Celula *policial = login(policiais);
             printf("%s\n", ((Policial *)policial->d)->nome);
             if(policial != NULL) telaPm(policial, chamadasFinalizadas, viaturas);
+        } else if(op == 5) {
+            Celula *policial = login(policiais);
+            printf("%s\n", ((Policial *)policial->d)->nome);
+            if(policial != NULL) telaOficial(policial, chamadasFinalizadas, viaturas);
         }
     } while(op != 0);
 
@@ -59,6 +63,7 @@ int main() {
     desalocar(ichamadasP);
     desalocar(ichamadasNP);
     desalocar(chamadasEmAndamento);
+    desalocar(chamadasFinalizadas);
 }
 
 void menu() {

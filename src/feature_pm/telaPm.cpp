@@ -12,6 +12,7 @@ void fazerBoletins(Celula *chamadasDoPolicial, Celula *viaturas);
 void imprimirChamadaDoPolicial(Celula *chamadaDoPolicial, Celula *viaturas);
 
 void telaPm(Celula *policial, Celula *chamadasFinalizadas, Celula *viaturas) {
+    printf("\nSPM - Policial Militar\n\n");
     Celula *chamadasDoPolicial = NULL;
 
     coletarChamadasDoPolicial(policial, chamadasFinalizadas, chamadasDoPolicial, viaturas);
@@ -72,11 +73,11 @@ void fazerBoletins(Celula *chamadasDoPolicial, Celula *viaturas) {
         } 
         chamadasDoPolicial = chamadasDoPolicial->prox;
     }
-    printf("\nNão há mais ocorrências no nome do policial\n");
+    printf("\nNão há mais ocorrências no nome do policial\n\n");
     printf("1 - Voltar ao Menu Principal\n");
     scanf("%d", &op);
     while(op  != 1) {
-        printf("Não há mais ocorrências no nome do policial\n");
+        printf("Não há mais ocorrências no nome do policial\n\n");
         printf("1 - Voltar ao Menu Principal\n");
         scanf("%d", &op);
     }

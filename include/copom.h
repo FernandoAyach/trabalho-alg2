@@ -35,3 +35,4 @@ void removerChamada(
 );
 
 void registrarOcorrencia(Chamada *chamada, Celula *viaturas);
+void atualizarBoletins(Celula *chamadasFinalizadas, Celula *viaturas);

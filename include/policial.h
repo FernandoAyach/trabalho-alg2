@@ -16,9 +16,7 @@ struct Policial {
 };
 
 void lerArquivoPoliciais(Celula *&policiais);
-
 Celula *buscarPolicial(Celula *lst, char nomeGuerra[MAX+1]);
-
 Celula* login(Celula *policiais);
-
 void telaPm(Celula *policial, Celula *chamadasFinalizadas, Celula *viaturas);
+void telaOficial(Celula *policial, Celula *chamadasFinalizadas, Celula *viaturas);
