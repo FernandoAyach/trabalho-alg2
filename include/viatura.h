@@ -9,7 +9,7 @@
 #define TIPO_REGULAR "regular"
 #define TIPO_ESPECIALIZADA "especializada"
 
-enum Status {NAO_APTO, LIVRE, INDISPONIVEL, CHAMADA};
+enum Status {NAO_APTO, LIVRE, INDISPONIVEL, CHAMADA, REFORCO};
 
 struct Viatura {
     char codigo[COD_VIATURA+1];
@@ -29,24 +29,24 @@ void viaturaLogin(
     Celula *&viaturaAtual, Celula *&chamadasEmAndamento,
     Celula *&ichamadasP, Celula *&fchamadasP,
     Celula *&ichamadasNP, Celula *&fchamadasNP,
-    Celula *&chamadasFinalizadas
+    Celula *&chamadasFinalizadas, Celula *&ireforcos, Celula *&freforcos
 );
 void viaturaNeutro(
     Celula *&viaturaAtual, Celula *pessoas, Celula *&chamadasEmAndamento, Celula *viaturas,
     Celula *&ichamadasP, Celula *&fchamadasP,
     Celula *&ichamadasNP, Celula *&fchamadasNP,
-    Celula *&chamadasFinalizadas
+    Celula *&chamadasFinalizadas, Celula *&ireforcos, Celula *&freforcos
 );
 void viaturaRonda(int &op);
 void viaturaChamada(
     Celula *pessoas, Celula *&viaturaAtual, Celula *chamada, 
     Celula *&chamadasEmAndamento, Celula *viaturas,
-    Celula *&chamadasFinalizadas
+    Celula *&chamadasFinalizadas, Celula *&ireforcos, Celula *&freforcos
 );
 void viaturaBuscarCpf(Celula *pessoas);
-void viaturaSolicitarReforcos();
+void viaturaSolicitarReforcos(Celula *&ireforcos, Celula *&freforcos, Celula *chamada);
 void viaturaPrisao(Celula *pessoas, int &x, Celula *chamada, Celula *viaturaAtual);
 void viaturaEmUso(
     Celula *&viaturaAtual, Celula *pessoas, Celula *&chamadasEmAndamento, Celula *viaturas,
-    Celula *&chamadasFinalizadas
+    Celula *&chamadasFinalizadas, Celula *&ireforcos, Celula *&freforcos
 );

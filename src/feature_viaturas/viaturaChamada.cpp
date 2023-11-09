@@ -10,7 +10,8 @@ void menuOcorrencia(int &op);
 void viaturaChamada(
     Celula *pessoas, Celula *&viaturaAtual, Celula *chamada, 
     Celula *&chamadasEmAndamento, Celula *viaturas,
-    Celula *&chamadasFinalizadas
+    Celula *&chamadasFinalizadas,
+    Celula *&ireforcos, Celula *&freforcos
 ) {
     char *descricao = ((Chamada *)chamada->d)->descricao;
     char* localizacao = ((Chamada *)chamada->d)->localizacao;
@@ -36,7 +37,11 @@ void viaturaChamada(
         if(op == 1) {
             viaturaBuscarCpf(pessoas);
         } else if(op == 2) {
-            viaturaSolicitarReforcos();
+            if(((Viatura *)viaturaAtual->d)->status != REFORCO) {
+                viaturaSolicitarReforcos(ireforcos, freforcos, chamada);
+            } else {
+                printf("Você não pode fazer mais reforços para esta chamada\n");
+            }
         } else if(op == 3) {
             ((Viatura *)viaturaAtual->d)->status = INDISPONIVEL;
             viaturaPrisao(pessoas, op, chamada, viaturaAtual);

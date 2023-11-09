@@ -1,5 +1,5 @@
 #pragma once
-
+#include <stdio.h>
 #include "linked_list.h"
 #include "viatura.h"
 
@@ -17,6 +17,7 @@ struct Chamada {
     char *boletim;
     int nPresos = 0;
     Celula **presos;
+    Celula *reforco = NULL;
 };
 
 void criarChamadaPolicial(
@@ -24,20 +25,18 @@ void criarChamadaPolicial(
     Celula *&ichamadasNP, Celula *&fchamadasNP,
     Celula *viaturas
 );
-
 void distribuirChamada(
     Celula *&ichamadasP, Celula *&fchamadasP,
     Celula *&ichamadasNP, Celula *&fchamadasNP,
     Celula *viaturas, Celula *&chamadasEmAndamento
 );
-
 void removerChamada(
     Celula *&chamadasEmAndamento, 
     char codigo[COD_VIATURA],
     Celula *viaturas,
     Celula *&chamadasFinalizadas
 );
-
 void registrarBoletim(Chamada *chamada);
 void atualizarBoletins(Celula *chamadasFinalizadas);
 void gerarOficio(Celula *chamadasFinalizadas, Celula *viaturas);
+void verificarReforcos(Celula *&ireforcos, Celula *&freforcos, Celula *viaturas);

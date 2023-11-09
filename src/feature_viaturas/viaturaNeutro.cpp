@@ -9,17 +9,27 @@
 void menuNeutro(int &op);
 Celula* obterChamada(Celula *viaturaAtual, Celula *chamadasEmAndamento);
 void desalocarViatura(Celula *&viaturaAtual);
+Celula* obterChamadaDoReforco(Celula *viaturaAtual, Celula *chamadasEmAndamento);
 
 void viaturaNeutro(
     Celula *&viaturaAtual, Celula *pessoas, Celula *&chamadasEmAndamento, Celula *viaturas,
     Celula *&ichamadasP, Celula *&fchamadasP, Celula *&ichamadasNP, Celula *&fchamadasNP,
-    Celula *&chamadasFinalizadas
+    Celula *&chamadasFinalizadas, Celula *&ireforcos, Celula *&freforcos
 ) {
     int op;
     
     do {
         menuNeutro(op);
         if(op == 1) {
+            if(((Viatura *)viaturaAtual->d)->status == REFORCO) {
+                Celula *chamada = obterChamadaDoReforco(viaturaAtual, chamadasEmAndamento);
+                viaturaChamada(
+                    pessoas, viaturaAtual, chamada, chamadasEmAndamento, viaturas, chamadasFinalizadas,
+                    ireforcos, freforcos
+                );
+                return;
+            }
+
             ((Viatura *)viaturaAtual->d)->status = LIVRE;
             imprimirChamadas(chamadasEmAndamento);
             distribuirChamada(
@@ -30,7 +40,8 @@ void viaturaNeutro(
             if(chamada != NULL) {
                 ((Viatura *)viaturaAtual->d)->status = CHAMADA;
                 viaturaChamada(
-                    pessoas, viaturaAtual, chamada, chamadasEmAndamento, viaturas, chamadasFinalizadas
+                    pessoas, viaturaAtual, chamada, chamadasEmAndamento, viaturas, chamadasFinalizadas,
+                    ireforcos, freforcos
                 );
                 return;
             }

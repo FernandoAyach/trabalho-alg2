@@ -56,7 +56,8 @@ void removerChamada(Celula *&lst, char codigo[COD_VIATURA+1], Celula *viaturas, 
         chamada = ((Chamada *)q->d);
         i = 0; 
         while(
-            i < chamada->viaturasNecessarias && strcmp(chamada->codigoViatura[i], codigo) != 0
+            i < chamada->viaturasNecessarias && strcmp(chamada->codigoViatura[i], codigo) != 0 &&
+            strcmp(((Viatura *)chamada->reforco->d)->codigo, codigo) != 0
         ) {
             i++;
         }
@@ -74,6 +75,11 @@ void removerChamada(Celula *&lst, char codigo[COD_VIATURA+1], Celula *viaturas, 
             viatura = buscarViatura(viaturas, chamada->codigoViatura[i]);
             ((Viatura *)viatura->d)->status = LIVRE;
             printf("Viatura envolvida: %s\n",  ((Viatura *)viatura->d)->codigo);
+        }
+        if(chamada->reforco != NULL) {
+            ((Viatura *)chamada->reforco->d)->status = LIVRE;
+            chamada->reforco = NULL;
+            printf("Liberou a viatura do reforço\n");
         }
         inserirFim(chamadasFinalizadas, chamada);
 

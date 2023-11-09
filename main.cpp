@@ -18,6 +18,7 @@ int main() {
     Celula *pessoas = NULL;
 
     Celula *ichamadasP = NULL, *fchamadasP = NULL, *ichamadasNP = NULL, *fchamadasNP = NULL;
+    Celula *ireforcos = NULL, *freforcos = NULL;
     Celula *chamadasEmAndamento = NULL;
     Celula *chamadasFinalizadas = NULL;
 
@@ -33,14 +34,18 @@ int main() {
             viaturaLogin(
                 viaturas, policiais, pessoas, viaturaAtual, chamadasEmAndamento, 
                 ichamadasP, fchamadasP,ichamadasNP, fchamadasNP,
-                chamadasFinalizadas
+                chamadasFinalizadas, ireforcos, freforcos
             );
         } else if(op == 2) {
             distribuirChamada(
                 ichamadasP, fchamadasP, ichamadasNP, fchamadasNP, viaturas, chamadasEmAndamento
             );
-            viaturaEmUso(viaturaAtual, pessoas, chamadasEmAndamento, viaturas, chamadasFinalizadas);
+            viaturaEmUso(
+                viaturaAtual, pessoas, chamadasEmAndamento, viaturas, chamadasFinalizadas,
+                ireforcos, freforcos
+            );
         } else if(op == 3) {
+            verificarReforcos(ireforcos, freforcos, viaturas);
             criarChamadaPolicial(ichamadasP,fchamadasP,ichamadasNP, fchamadasNP, viaturas);
             distribuirChamada(
                 ichamadasP, fchamadasP, ichamadasNP, ichamadasNP, 
@@ -74,6 +79,7 @@ int main() {
     desalocar(ichamadasNP);
     desalocar(chamadasEmAndamento);
     desalocar(chamadasFinalizadas);
+    desalocar(ireforcos);
 }
 
 void menu() {

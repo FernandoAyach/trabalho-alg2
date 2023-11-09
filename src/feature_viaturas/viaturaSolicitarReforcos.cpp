@@ -1,8 +1,9 @@
 #include <stdio.h>
 
 #include "../../include/viatura.h"
+#include "../../include/fila.h"
 
-void viaturaSolicitarReforcos() {
+void viaturaSolicitarReforcos(Celula *&ireforcos, Celula *&freforcos, Celula *chamada) {
     int op; 
 
     do {
@@ -12,7 +13,7 @@ void viaturaSolicitarReforcos() {
         scanf("%d", &op);
 
         if(op == 1) {
-            //encaminhar pedido de reforço pro COPOM
+            enfileirar(ireforcos, freforcos, chamada->d);
             return;
         }
     } while(op != 2);

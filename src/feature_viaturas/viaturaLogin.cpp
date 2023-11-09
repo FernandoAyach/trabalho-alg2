@@ -13,7 +13,8 @@ void desalocarViatura(Celula *&viaturaAtual);
 void viaturaLogin(
     Celula *&viaturas, Celula *&policiais, Celula *pessoas, Celula *&viaturaAtual,
     Celula *&chamadasEmAndamento, Celula *&ichamadasP, Celula *&fchamadasP,
-    Celula *&ichamadasNP, Celula *&fchamadasNP, Celula *&chamadasFinalizadas
+    Celula *&ichamadasNP, Celula *&fchamadasNP, Celula *&chamadasFinalizadas,
+    Celula *&ireforcos, Celula *&freforcos
 ) {
     int tipoPolicia, quantPM;
     char codigo[COD_VIATURA+1];
@@ -55,7 +56,7 @@ void viaturaLogin(
     
     viaturaNeutro(
         viaturaAtual, pessoas, chamadasEmAndamento, viaturas, ichamadasP, fchamadasP,
-        ichamadasNP, fchamadasNP, chamadasFinalizadas
+        ichamadasNP, fchamadasNP, chamadasFinalizadas, ireforcos, freforcos
     );
 }
 
