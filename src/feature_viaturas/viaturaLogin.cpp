@@ -47,6 +47,7 @@ void viaturaLogin(
     for(int i = 0; i < quantPM; i++) {
         scanf(" %[^\n]", nomeGuerra);
         policial = buscarPolicial(policiais, nomeGuerra);
+        ((Policial *)policial->d)->trabalhou = true;
         ((Viatura *)viatura->d)->policiais[i] = (char *) calloc(1, sizeof(char));
         if(policial != NULL) strcpy(((Viatura *)viatura->d)->policiais[i], nomeGuerra); 
         else printf("Policial não existe!\n");
