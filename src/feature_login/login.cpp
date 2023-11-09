@@ -6,7 +6,7 @@
 
 void descriptografar(char senha[MAX], char sdi[MAX]);
 
-Celula* login(Celula *policiais) {
+Celula* login(Celula *policiais, const char cargo[]) {
     char nomeGuerra[MAX], senha[MAX], sdi[MAX];
 
     printf("Digite o nome de guerra: ");
@@ -18,6 +18,11 @@ Celula* login(Celula *policiais) {
     if(policial == NULL) {
         printf("Este policial não existe!\n");
         return policial;
+    }
+
+    if(!(strcmp(cargo, PM) == 0 || strcmp(((Policial*)policial->d)->cargo, cargo) == 0)) {
+        printf("Este policial não tem autorização para esta função!\n");
+        return NULL;
     }
 
     descriptografar(((Policial*)policial->d)->senha, sdi);

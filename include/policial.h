@@ -5,6 +5,9 @@
 #define CPF_SIZE 11
 #define PATH_POLICIAL "D:\\Usuario\\Desktop\\Central\\Codes\\ufms\\alg2\\spm\\arquivos_entrada\\policiais.txt"
 #define PATH_RELATORIO "D:\\Usuario\\Desktop\\Central\\Codes\\ufms\\alg2\\spm\\arquivos_saida\\relatorio.txt"
+#define OFICIAL "Oficial"
+#define COMANDANTE "Comandante Geral"
+#define PM "PM"
 
 struct Policial {
     char nome[MAX+1];
@@ -19,7 +22,7 @@ struct Policial {
 
 void lerArquivoPoliciais(Celula *&policiais);
 Celula *buscarPolicial(Celula *lst, char nomeGuerra[MAX+1]);
-Celula* login(Celula *policiais);
+Celula* login(Celula *policiais, const char cargo[]);
 void telaPm(Celula *policial, Celula *chamadasFinalizadas, Celula *viaturas);
 void telaOficial(Celula *chamadasFinalizadas, Celula *viaturas, Celula *policiais);
 void telaComandante(Celula *chamadasFinalizadas, Celula *viaturas);

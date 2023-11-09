@@ -47,17 +47,23 @@ int main() {
                 viaturas, chamadasEmAndamento
             );
         } else if(op == 4) {
-            Celula *policial = login(policiais);
-            printf("%s\n", ((Policial *)policial->d)->nome);
-            if(policial != NULL) telaPm(policial, chamadasFinalizadas, viaturas);
+            Celula *policial = login(policiais, PM);
+            if(policial != NULL) {
+                printf("%s\n", ((Policial *)policial->d)->nome);
+                telaPm(policial, chamadasFinalizadas, viaturas);
+            }
         } else if(op == 5) {
-            Celula *policial = login(policiais);
-            printf("%s\n", ((Policial *)policial->d)->nome);
-            if(policial != NULL) telaOficial(chamadasFinalizadas, viaturas, policiais);
+            Celula *policial = login(policiais, OFICIAL);
+            if(policial != NULL) {
+                printf("%s\n", ((Policial *)policial->d)->nome);
+                telaOficial(chamadasFinalizadas, viaturas, policiais);
+            }
         } else if(op == 6) {
-            Celula *policial = login(policiais);
-            printf("%s\n", ((Policial *)policial->d)->nome);
-            if(policial != NULL) telaComandante(chamadasFinalizadas, viaturas);
+            Celula *policial = login(policiais, COMANDANTE);
+            if(policial != NULL) {
+                printf("%s\n", ((Policial *)policial->d)->nome);
+                telaComandante(chamadasFinalizadas, viaturas);
+            }
         }
     } while(op != 0);
 
