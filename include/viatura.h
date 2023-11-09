@@ -45,7 +45,7 @@ void viaturaChamada(
 );
 void viaturaBuscarCpf(Celula *pessoas);
 void viaturaSolicitarReforcos();
-void viaturaPrisao(Celula *pessoas, int &x);
+void viaturaPrisao(Celula *pessoas, int &x, Celula *chamada, Celula *viaturaAtual);
 void viaturaEmUso(
     Celula *&viaturaAtual, Celula *pessoas, Celula *&chamadasEmAndamento, Celula *viaturas,
     Celula *&chamadasFinalizadas

@@ -3,8 +3,9 @@
 
 #include "../../include/pessoa.h"
 #include "../../include/linked_list.h"
+#include "../../include/copom.h"
 
-void viaturaPrisao(Celula *pessoas, int &x) {
+void viaturaPrisao(Celula *pessoas, int &x, Celula *chamada, Celula *viaturaAtual) {
     int n, op;
     char cpf[CPF_SIZE+1];
     
@@ -19,7 +20,11 @@ void viaturaPrisao(Celula *pessoas, int &x) {
             scanf(" %[^\n]", cpf);
             Celula *pessoa = buscarPessoa(pessoas, cpf);
             presos[i] = pessoa;
+            printf("%s\n", ((Pessoa *)presos[i]->d)->nome);
+            ((Chamada *)chamada->d)->nPresos++;
         }
+        ((Chamada *)chamada->d)->presos = presos;
+        printf("%s\n", ((Pessoa*)((Chamada *)chamada->d)->presos[0]->d)->nome);
     }
 
     do {
@@ -32,5 +37,6 @@ void viaturaPrisao(Celula *pessoas, int &x) {
             return;
         }
     } while(op != 1);
+    ((Viatura *)viaturaAtual->d)->status = CHAMADA;
 }
 

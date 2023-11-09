@@ -15,6 +15,8 @@ struct Chamada {
     char **codigoViatura;
     bool temBoletim = false;
     char *boletim;
+    int nPresos = 0;
+    Celula **presos;
 };
 
 void criarChamadaPolicial(

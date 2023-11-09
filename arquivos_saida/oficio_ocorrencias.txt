@@ -1,19 +1,10 @@
 OcorrÃªncias -
 Tipo Policia: regular
-Descricao: Felipe neto matou nando moura
-Localizacao: Sao paulo
-Policial Tigre
-Policial Cobra
-
-Tipo Policia: regular
-Descricao: Nando moura nao morreu e quer vingan‡a
-Localizacao: Sao paulo
-Policial Tigre
-Policial Cobra
-
-Tipo Policia: regular
-Descricao: Um carro foi penetrado
-Localizacao: Aquidauana
-Policial Tigre
-Policial Cobra
+Descricao: That's the way it goes
+Localizacao: Liverpool
+Policiais:
+- Tigre;
+- Cobra;
+Presos:
+- Ana Costa, 99988877766;
 

@@ -5,6 +5,7 @@
 #include "../../include/copom.h"
 #include "../../include/linked_list.h"
 #include "../../include/viatura.h"
+#include "../../include/pessoa.h"
 
 void gerarOficio(Celula *chamadasFinalizadas, Celula *viaturas) {
     FILE *pArq;
@@ -33,11 +34,27 @@ void gerarOficio(Celula *chamadasFinalizadas, Celula *viaturas) {
         for(int i = 0; i < chamada->viaturasNecessarias; i++) {
             viatura = buscarViatura(viaturas, chamada->codigoViatura[i]);
             printf("Pegou a viatura\n");
+            fprintf(pArq, "Policiais:\n");
             for(int j = 0; j < ((Viatura *)viatura->d)->nPoliciais; j++) {
-                fprintf(pArq, "Policial %s\n", ((Viatura *)viatura->d)->policiais[j]);
+                fprintf(pArq, "- %s;\n", ((Viatura *)viatura->d)->policiais[j]);
             }
             printf("Printou os policiais da viatura\n");
         }
+
+        if(chamada->nPresos != 0) fprintf(pArq, "Presos:\n");
+        for(int i = 0; i < chamada->nPresos; i++) {
+            fprintf(
+                pArq, "- %s, %s;\n", 
+                ((Pessoa *)chamada->presos[i]->d)->nome, 
+                ((Pessoa *)chamada->presos[i]->d)->CPF
+            );
+            printf(
+                "- %s, %s;\n", 
+                ((Pessoa *)chamada->presos[i]->d)->nome, 
+                ((Pessoa *)chamada->presos[i]->d)->CPF
+            );
+        }
+        printf("Printou os presos");
         fprintf(pArq, "\n");
         
         chamadasFinalizadas = chamadasFinalizadas->prox;

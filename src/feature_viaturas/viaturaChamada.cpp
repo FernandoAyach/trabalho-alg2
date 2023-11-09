@@ -39,14 +39,16 @@ void viaturaChamada(
             viaturaSolicitarReforcos();
         } else if(op == 3) {
             ((Viatura *)viaturaAtual->d)->status = INDISPONIVEL;
-            viaturaPrisao(pessoas, op);
+            viaturaPrisao(pessoas, op, chamada, viaturaAtual);
         }
     } while(op != 4); 
 
-    removerChamada(
-        chamadasEmAndamento, ((Viatura *)viaturaAtual->d)->codigo, viaturas,
-        chamadasFinalizadas
-    );
+    if(((Viatura *)viaturaAtual->d)->status != INDISPONIVEL) {
+        removerChamada(
+            chamadasEmAndamento, ((Viatura *)viaturaAtual->d)->codigo, viaturas,
+            chamadasFinalizadas
+        );
+    }
 }
 
 void menuChamada(char *&descricao, char *&localizacao, int &acaoPolicial) {

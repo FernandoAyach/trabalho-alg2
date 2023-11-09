@@ -4,6 +4,7 @@
 
 #include "../../include/policial.h"
 #include "../../include/copom.h"
+#include "../../include/pessoa.h"
 
 void imprimirChamadaComBoletim(Celula *chamadaDoPolicial, Celula *viaturas);
 void excluirBoletins(Celula *chamadasFinalizadas, Celula *viaturas);
@@ -77,6 +78,15 @@ void imprimirChamadaComBoletim(Celula *chamadaDoPolicial, Celula *viaturas) {
         for(int j = 0; j < ((Viatura *)viatura->d)->nPoliciais; j++) {
             printf(" - %s;\n", ((Viatura *)viatura->d)->policiais[j]);
         }
+    }
+
+    if(chamada->nPresos != 0) printf("Presos:\n");
+    for(int i = 0; i < chamada->nPresos; i++) {
+        printf(
+            "- %s, %s;\n", 
+            ((Pessoa *)chamada->presos[i]->d)->nome, 
+            ((Pessoa *)chamada->presos[i]->d)->CPF
+        );
     }
     printf("Boletim: %s\n", chamada->boletim);
     printf("\n");
