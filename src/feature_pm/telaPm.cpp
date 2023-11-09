@@ -68,7 +68,14 @@ void fazerBoletins(Celula *chamadasDoPolicial, Celula *viaturas) {
         
         if(op == 1) {
             ((Chamada *)chamadasDoPolicial->d)->temBoletim = true;
-            registrarOcorrencia((Chamada *)chamadasDoPolicial->d, viaturas);
+            ((Chamada *)chamadasDoPolicial->d)->boletim = (char *) calloc(1, sizeof(char));
+            char *boletimPM = (char *) calloc(1, sizeof(char));
+            printf("Insira o boletim: ");
+            scanf(" %[^\n]", boletimPM);
+            printf("Obteve boletim\n");
+            ((Chamada *)chamadasDoPolicial->d)->boletim = boletimPM;
+            printf("Copiou\n");
+            registrarBoletim((Chamada *)chamadasDoPolicial->d);
             printf("\nBoletim registrado\n");
         } 
         chamadasDoPolicial = chamadasDoPolicial->prox;

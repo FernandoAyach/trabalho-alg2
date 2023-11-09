@@ -1,15 +1,19 @@
 OcorrÃªncias -
 Tipo Policia: regular
-Descricao: Muito massa
-Localizacao: Aquidauana
+Descricao: Felipe neto matou nando moura
+Localizacao: Sao paulo
 Policial Tigre
 Policial Cobra
 
-Tipo Policia: especializada
-Descricao: Barra pesada aqui
-Localizacao: Campo Grande
+Tipo Policia: regular
+Descricao: Nando moura nao morreu e quer vingan‡a
+Localizacao: Sao paulo
 Policial Tigre
 Policial Cobra
-Policial Pantera
-Policial Lobo
+
+Tipo Policia: regular
+Descricao: Um carro foi penetrado
+Localizacao: Aquidauana
+Policial Tigre
+Policial Cobra
 

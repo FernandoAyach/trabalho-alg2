@@ -6,7 +6,7 @@
 #include "../../include/linked_list.h"
 #include "../../include/viatura.h"
 
-void atualizarBoletins(Celula *chamadasFinalizadas, Celula *viaturas) {
+void atualizarBoletins(Celula *chamadasFinalizadas) {
     FILE *pArq;
     pArq = fopen(PATH_BOLETIM, "w");
 
@@ -22,25 +22,11 @@ void atualizarBoletins(Celula *chamadasFinalizadas, Celula *viaturas) {
         chamada = (Chamada *)chamadasFinalizadas->d;
 
         if(chamada->temBoletim) {
-            fprintf(pArq, "Tipo Policia: %s\n", chamada->tipoPolicia);
-            printf("Printou tipo policia\n");
-            fprintf(pArq, "Descricao: %s\n", chamada->descricao);
-            printf("Printou descricao\n");
-            fprintf(pArq, "Localizacao: %s\n", chamada->localizacao);
-            printf("Printou localizacao\n");
-
-            Celula *viatura;
-            for(int i = 0; i < chamada->viaturasNecessarias; i++) {
-                viatura = buscarViatura(viaturas, chamada->codigoViatura[i]);
-                printf("Pegou a viatura\n");
-                for(int j = 0; j < ((Viatura *)viatura->d)->nPoliciais; j++) {
-                    fprintf(pArq, "Policial %s\n", ((Viatura *)viatura->d)->policiais[j]);
-                }
-                printf("Printou os policiais da viatura\n");
-            }
+            fprintf(pArq, "Boletim - Chamada %s %s\n", chamada->descricao, chamada->localizacao);
+            fprintf(pArq, "- %s\n", chamada->boletim);
+            printf("Printou boletim\n");
             fprintf(pArq, "\n");
         }
-        
         chamadasFinalizadas = chamadasFinalizadas->prox;
     }
 

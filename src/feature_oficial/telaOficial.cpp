@@ -5,7 +5,7 @@
 #include "../../include/policial.h"
 #include "../../include/copom.h"
 
-void imprimirChamadaDoPolicial(Celula *chamadaDoPolicial, Celula *viaturas);
+void imprimirChamadaComBoletim(Celula *chamadaDoPolicial, Celula *viaturas);
 void excluirBoletins(Celula *chamadasFinalizadas, Celula *viaturas);
 
 void telaOficial(Celula *chamadasFinalizadas, Celula *viaturas, Celula *policiais) {
@@ -33,7 +33,7 @@ void excluirBoletins(Celula *chamadasFinalizadas, Celula *viaturas) {
 
     while(chamadasFinalizadas != NULL) {
         if(((Chamada *)chamadasFinalizadas->d)->temBoletim) {
-            imprimirChamadaDoPolicial(chamadasFinalizadas, viaturas);
+            imprimirChamadaComBoletim(chamadasFinalizadas, viaturas);
             printf("1 - Excluir Boletim   2 - Não Excluir Boletim  3 - Voltar ao Menu Principal\n");
             scanf("%d", &op);
             while(op != 1 && op != 2 && op != 3) {
@@ -45,7 +45,8 @@ void excluirBoletins(Celula *chamadasFinalizadas, Celula *viaturas) {
             
             if(op == 1) {
                 ((Chamada *)chamadasFinalizadas->d)->temBoletim = false;
-                atualizarBoletins(chamadasFinalizadas, viaturas);
+                free(((Chamada *)chamadasFinalizadas->d)->boletim);
+                atualizarBoletins(chamadasFinalizadas);
                 printf("\nBoletim excluído\n");
             } 
         }
@@ -61,4 +62,22 @@ void excluirBoletins(Celula *chamadasFinalizadas, Celula *viaturas) {
         printf("1 - Voltar ao Menu Principal\n");
         scanf("%d", &op);
     }
+}
+
+void imprimirChamadaComBoletim(Celula *chamadaDoPolicial, Celula *viaturas) {
+    Chamada *chamada = (Chamada *)chamadaDoPolicial->d;
+
+    printf("\nTipo Policia: %s\n", chamada->tipoPolicia);
+    printf("Descricao: %s\n", chamada->descricao);
+    printf("Localizacao: %s\n", chamada->localizacao);
+    printf("Policiais:\n");
+    Celula *viatura;
+    for(int i = 0; i < chamada->viaturasNecessarias; i++) {
+        viatura = buscarViatura(viaturas, chamada->codigoViatura[i]);
+        for(int j = 0; j < ((Viatura *)viatura->d)->nPoliciais; j++) {
+            printf(" - %s;\n", ((Viatura *)viatura->d)->policiais[j]);
+        }
+    }
+    printf("Boletim: %s\n", chamada->boletim);
+    printf("\n");
 }

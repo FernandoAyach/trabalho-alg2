@@ -39,7 +39,9 @@ void descriptografar(char senha[MAX], char sdi[MAX]) {
     char sd[MAX];
     strcpy(sd, senha); 
     int len = strlen(senha), k = 0;
-    //k0u9t5hj98e
+    //k0u9t5hj98e cobra - pm
+    //dm4nzjsos6s lobo - oficial
+    //cuw7a00nvk3 lima - comandante
 
     for(int i = 0; i < len; i++) {
         if(sd[i] >= 'A' && sd[i] <= 'Z') {
