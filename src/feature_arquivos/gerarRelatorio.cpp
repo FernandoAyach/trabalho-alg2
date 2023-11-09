@@ -6,17 +6,16 @@
 #include "../../include/policial.h"
 
 void obterQuemTrabalhou(Celula *viaturas, Celula *policiais, Celula *&v, Celula *&p, int &n1, int &n2);
-void ordenar(Celula *&lst, int n);
+void ordenarViaturas(Celula *&v, int n);
+void ordenarPoliciais(Celula *&v, int n);
 void imprimirRelatorio(Celula *v, Celula *p);
 
 void gerarRelatorio(Celula *viaturas, Celula *policiais) {
     Celula *v = NULL, *p = NULL;
     int n1 = 0, n2 = 0;
     obterQuemTrabalhou(viaturas, policiais, v, p, n1, n2);
-
-    ordenar(v, n1);
-    ordenar(p, n2);
-
+    ordenarViaturas(v, n1);
+    ordenarPoliciais(p, n2);
     imprimirRelatorio(v, p);
     desalocar(v);
     desalocar(p);
@@ -48,8 +47,46 @@ void obterQuemTrabalhou(Celula *viaturas, Celula *policiais, Celula *&v, Celula 
     }
 }
 
-void ordenar(Celula *&lst, int n) {
-    
+void ordenarViaturas(Celula *&v, int n) { // Selection Sort
+    Celula *p = v, *q, *x;
+    void *aux;
+
+    while(p->prox != NULL) {
+        x = p;
+        q = p->prox;
+        while(q != NULL) {
+            if(strcmp(((Viatura *)q->d)->codigo, ((Viatura *)x->d)->codigo) < 0) x = q;
+            q = q->prox;
+        }
+
+        if(x != p) {
+            aux = x->d;
+            x->d = p->d;
+            p->d = aux; 
+        }
+        p = p->prox;
+    }
+}
+
+void ordenarPoliciais(Celula *&v, int n) { // Selection Sort
+    Celula *p = v, *q, *x;
+    void *aux;
+
+    while(p->prox != NULL) {
+        x = p;
+        q = p->prox;
+        while(q != NULL) {
+            if(strcmp(((Policial *)q->d)->nome, ((Policial *)x->d)->nome) < 0) x = q;
+            q = q->prox;
+        }
+
+        if(x != p) {
+            aux = x->d;
+            x->d = p->d;
+            p->d = aux; 
+        }
+        p = p->prox;
+    }
 }
 
 void imprimirRelatorio(Celula *v, Celula *p) {
