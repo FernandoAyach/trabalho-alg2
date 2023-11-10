@@ -1,12 +1,6 @@
 PMS -
-Bruno Lima 34
-Daniel Oliveira 32
-Juliana Costa 33
 Lucas Oliveira 35
 Marcos Pereira 42
-Ricardo Alves 30
 
 VIATURAS -
 V001
-V003
-V006

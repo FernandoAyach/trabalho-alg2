@@ -58,11 +58,13 @@ void removerChamada(Celula *&lst, char codigo[COD_VIATURA+1], Celula *viaturas, 
         i = 0; 
         while(
             i < chamada->viaturasNecessarias && (
-            !chamada->prioritaria || ( 
-            strcmp(chamada->codigoViatura[i], codigo) != 0 &&
-            ((Viatura *)chamada->reforco != NULL &&
-            strcmp(((Viatura *)chamada->reforco->d)->codigo, codigo) != 0
-            ))
+                (!chamada->prioritaria ||
+                strcmp(chamada->tipoPolicia, ((Viatura *)buscarViatura(viaturas, codigo)->d)->tipo) != 0) || 
+                ( 
+                    strcmp(chamada->codigoViatura[i], codigo) != 0 &&
+                    ((Viatura *)chamada->reforco != NULL &&
+                    strcmp(((Viatura *)chamada->reforco->d)->codigo, codigo) != 0) 
+                )
             )
         ) {
             i++;
@@ -86,7 +88,10 @@ void removerChamada(Celula *&lst, char codigo[COD_VIATURA+1], Celula *viaturas, 
             i = 0; 
             while(
                 i < chamada->viaturasNecessarias && strcmp(chamada->codigoViatura[i], codigo) != 0 &&
+                strcmp(((Viatura *)chamada->reforco->d)->codigo, codigo) != 0 &&
+                ((Viatura *)chamada->reforco != NULL &&
                 strcmp(((Viatura *)chamada->reforco->d)->codigo, codigo) != 0
+                )
             ) {
                 i++;
             }

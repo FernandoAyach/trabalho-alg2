@@ -31,10 +31,10 @@ void gerarOficio(Celula *chamadasFinalizadas, Celula *viaturas) {
         printf("Printou localizacao\n");
 
         Celula *viatura;
+        fprintf(pArq, "Policiais:\n");
         for(int i = 0; i < chamada->viaturasNecessarias; i++) {
             viatura = buscarViatura(viaturas, chamada->codigoViatura[i]);
             printf("Pegou a viatura\n");
-            fprintf(pArq, "Policiais:\n");
             for(int j = 0; j < ((Viatura *)viatura->d)->nPoliciais; j++) {
                 fprintf(pArq, "- %s;\n", ((Viatura *)viatura->d)->policiais[j]);
             }
