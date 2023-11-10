@@ -5,6 +5,8 @@ Localizacao: b
 Policiais:
 - Tigre;
 - Cobra;
-- Lince;
+- Pantera;
 - Lobo;
+Presos:
+- Ana Costa, 99988877766;
 

@@ -70,7 +70,7 @@ void fazerBoletins(Celula *chamadasDoPolicial, Celula *viaturas) {
         if(op == 1) {
             ((Chamada *)chamadasDoPolicial->d)->temBoletim = true;
             ((Chamada *)chamadasDoPolicial->d)->boletim = (char *) calloc(1, sizeof(char));
-            char *boletimPM = (char *) calloc(1, sizeof(char));
+            char *boletimPM = (char *) malloc(10000 * sizeof(char));
             printf("Insira o boletim: ");
             scanf(" %[^\n]", boletimPM);
             printf("Obteve boletim\n");
