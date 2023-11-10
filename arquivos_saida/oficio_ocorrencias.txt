@@ -1,17 +1,1 @@
 Ocorrências -
-Tipo Policia: regular
-Descricao: Muito dificil aqui em
-Localizacao: Nao sei
-Policiais:
-- Tigre;
-- Cobra;
-Presos:
-- Pedro Ferreira, 77788899911;
-
-Tipo Policia: regular
-Descricao: a
-Localizacao: b
-Policiais:
-- Pantera;
-- Lobo;
-

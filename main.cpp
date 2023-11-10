@@ -80,6 +80,7 @@ int main() {
     desalocar(chamadasEmAndamento);
     desalocar(chamadasFinalizadas);
     desalocar(ireforcos);
+    free(viaturaAtual);
 }
 
 void menu() {
