@@ -1,1 +1,18 @@
 Ocorrências -
+Tipo Policia: regular
+Descricao: Muito barraco aqui
+Localizacao: Lugar nenhum
+Policiais:
+- Tigre;
+- Cobra;
+Policiais:
+- Lima;
+- Lobo;
+
+Tipo Policia: regular
+Descricao: QUalquer coisa
+Localizacao: sla
+Policiais:
+- Pantera;
+- Lince;
+

@@ -54,22 +54,52 @@ void removerChamada(Celula *&lst, char codigo[COD_VIATURA+1], Celula *viaturas, 
 
     while(q != NULL) {
         chamada = ((Chamada *)q->d);
+        printf("Chamada atual: %s\n", chamada->descricao);
         i = 0; 
         while(
-            i < chamada->viaturasNecessarias && strcmp(chamada->codigoViatura[i], codigo) != 0 &&
+            i < chamada->viaturasNecessarias && (
+            !chamada->prioritaria || ( 
+            strcmp(chamada->codigoViatura[i], codigo) != 0 &&
+            ((Viatura *)chamada->reforco != NULL &&
             strcmp(((Viatura *)chamada->reforco->d)->codigo, codigo) != 0
+            ))
+            )
         ) {
             i++;
+            printf("Não achou ainda\n");
         }
 
-        if(i < chamada->viaturasNecessarias) break;
+        if(i < chamada->viaturasNecessarias) {
+            printf("Achou\n");
+            break;
+        }
         p = q;
         q = q->prox;
     }
-    printf("Achou a chamada\n");
-    printf("Chamada a ser deletada %s\n", chamada->descricao);
+    
+    if(q == NULL) {
+        printf("Não há prioritárias a deletar\n");
+        p = NULL;
+        q = lst;
+        while(q != NULL) {
+            chamada = ((Chamada *)q->d);
+            i = 0; 
+            while(
+                i < chamada->viaturasNecessarias && strcmp(chamada->codigoViatura[i], codigo) != 0 &&
+                strcmp(((Viatura *)chamada->reforco->d)->codigo, codigo) != 0
+            ) {
+                i++;
+            }
+
+            if(i < chamada->viaturasNecessarias) break;
+            p = q;
+            q = q->prox;
+        }
+    }
 
     if(q != NULL) {
+        printf("Achou a chamada\n");
+        printf("Chamada a ser deletada %s\n", chamada->descricao);
         Celula *viatura;
         for(int i = 0; i < chamada->viaturasNecessarias; i++) {
             viatura = buscarViatura(viaturas, chamada->codigoViatura[i]);

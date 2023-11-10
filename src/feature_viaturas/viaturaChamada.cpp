@@ -14,7 +14,7 @@ void viaturaChamada(
     Celula *&ireforcos, Celula *&freforcos
 ) {
     char *descricao = ((Chamada *)chamada->d)->descricao;
-    char* localizacao = ((Chamada *)chamada->d)->localizacao;
+    char *localizacao = ((Chamada *)chamada->d)->localizacao;
     int acaoPolicial, op;
 
     for(int i = 0; i < ((Chamada *)chamada->d)->viaturasNecessarias; i++) {
@@ -25,6 +25,7 @@ void viaturaChamada(
     menuChamada(descricao, localizacao, acaoPolicial);
     
     if(acaoPolicial == 2) {
+        printf("Escolheu dispensar\n");
         removerChamada(
             chamadasEmAndamento, ((Viatura *)viaturaAtual->d)->codigo, viaturas,
             chamadasFinalizadas
