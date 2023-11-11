@@ -190,3 +190,46 @@ void desalocar(Celula *&lst) {
         free(aux);
     }
 }
+
+void desalocarViatura(Celula *&viaturaAtual) {
+    ((Viatura *)viaturaAtual->d)->status = NAO_APTO;
+    for(int i = 0; i < ((Viatura *)viaturaAtual->d)->nPoliciais; i++) {
+        free(((Viatura *)viaturaAtual->d)->policiais[i]);
+    }
+    viaturaAtual = NULL;
+}
+
+void desalocarViaturas(Celula *&lst) {
+    Celula *aux;
+    while(lst != NULL) {
+        aux = lst;
+        desalocarViatura(aux);
+        lst = lst->prox;
+    }
+}
+
+void desalocarChamada(Celula *&chamada) {
+    free(((Chamada *)chamada->d)->descricao);
+    free(((Chamada *)chamada->d)->localizacao);
+    free(((Chamada *)chamada->d)->boletim);
+    
+    for(int i = 0; i < ((Chamada *)chamada->d)->viaturasNecessarias; i++) {
+        free(((Chamada *)chamada->d)->codigoViatura[i]);
+    }
+    free(((Chamada *)chamada->d)->codigoViatura);
+
+    for(int i = 0; i < ((Chamada *)chamada->d)->nPresos; i++) {
+        free(((Chamada *)chamada->d)->presos[i]);
+    }
+    free(((Chamada *)chamada->d)->presos);
+    free(chamada);
+}
+
+void desalocarChamadas(Celula *&lst) {
+    Celula *aux;
+    while(lst != NULL) {
+        aux = lst;
+        desalocarChamada(aux);
+        lst = lst->prox;
+    }
+}

@@ -87,15 +87,14 @@ int main() {
         }
     } while(op != 0);
 
-    desalocar(viaturas);
+    desalocarViaturas(viaturas);
     desalocar(policiais);
     desalocar(pessoas);
-    desalocar(ichamadasP);
-    desalocar(ichamadasNP);
-    desalocar(chamadasEmAndamento);
-    desalocar(chamadasFinalizadas);
-    desalocar(ireforcos);
-    free(viaturaAtual);
+    desalocarChamadas(ichamadasP);
+    desalocarChamadas(ichamadasNP);
+    desalocarChamadas(chamadasEmAndamento);
+    desalocarChamadas(chamadasFinalizadas);
+    desalocarChamadas(ireforcos);
 }
 
 void menu() {

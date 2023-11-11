@@ -92,11 +92,3 @@ Celula* obterChamada(Celula *viaturaAtual, Celula *chamadasEmAndamento) {
     }
     return NULL;
 }
-
-void desalocarViatura(Celula *&viaturaAtual) {
-    ((Viatura *)viaturaAtual->d)->status = NAO_APTO;
-    for(int i = 0; i < ((Viatura *)viaturaAtual->d)->nPoliciais; i++) {
-        free(((Viatura *)viaturaAtual->d)->policiais[i]);
-    }
-    viaturaAtual = NULL;
-}

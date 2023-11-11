@@ -48,6 +48,7 @@ void lerArquivoPoliciais(Celula *&policiais) {
         inserirFim(policiais, policial);
         fscanfPolicial(pArq, nome, CPF, nomeGuerra, cidade, idade, cargo, senha);  
     }
+    free(nome);
 }
 
 void fscanfPolicial(
