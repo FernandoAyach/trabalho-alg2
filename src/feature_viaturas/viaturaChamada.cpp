@@ -45,7 +45,11 @@ void viaturaChamada(
             }
         } else if(op == 3) {
             ((Viatura *)viaturaAtual->d)->status = INDISPONIVEL;
-            viaturaPrisao(pessoas, op, chamada, viaturaAtual);
+            viaturaPrisao(
+                pessoas, op, chamada, viaturaAtual, 
+                chamadasEmAndamento, viaturas, chamadasFinalizadas
+            );
+            return;
         }
     } while(op != 4); 
 

@@ -5,7 +5,11 @@
 #include "../../include/linked_list.h"
 #include "../../include/copom.h"
 
-void viaturaPrisao(Celula *pessoas, int &x, Celula *chamada, Celula *viaturaAtual) {
+void viaturaPrisao(
+    Celula *pessoas, int &x, Celula *chamada, Celula *viaturaAtual,
+    Celula *&chamadasEmAndamento, Celula *viaturas,
+    Celula *&chamadasFinalizadas
+) {
     int n, op;
     char cpf[CPF_SIZE+1];
     
@@ -32,11 +36,13 @@ void viaturaPrisao(Celula *pessoas, int &x, Celula *chamada, Celula *viaturaAtua
         printf("1 - Confirmar retorno da DP\n");
         printf("2 - Voltar para o Menu Principal\n");
         scanf("%d", &op);
-        if(op == 2) {
-            x = 4;
-            return;
+
+        if(op == 1) {
+            removerChamada(
+                chamadasEmAndamento, ((Viatura *)viaturaAtual->d)->codigo, 
+                viaturas, chamadasFinalizadas
+            ); 
         }
-    } while(op != 1);
-    ((Viatura *)viaturaAtual->d)->status = CHAMADA;
+    } while(op != 1 && op != 2);
 }
 

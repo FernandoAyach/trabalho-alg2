@@ -28,7 +28,10 @@ void viaturaEmUso(
 
         if(((Viatura *)viaturaAtual->d)->status == INDISPONIVEL) {
             op = 7;
-            viaturaPrisao(pessoas, op, NULL, viaturaAtual);
+            viaturaPrisao(
+                pessoas, op, NULL, viaturaAtual, chamadasEmAndamento, viaturas,
+                chamadasFinalizadas
+            );
             return;
         }
 
