@@ -38,7 +38,10 @@ void viaturaChamada(
         if(op == 1) {
             viaturaBuscarCpf(pessoas);
         } else if(op == 2) {
-            if(((Viatura *)viaturaAtual->d)->status != REFORCO) {
+            if(
+                ((Viatura *)viaturaAtual->d)->status != REFORCO &&
+                ((Chamada *)chamada->d)->reforco == NULL
+            ) {
                 viaturaSolicitarReforcos(ireforcos, freforcos, chamada);
             } else {
                 printf("Você não pode fazer mais reforços para esta chamada\n");

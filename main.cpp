@@ -12,7 +12,7 @@ void menu();
 void lerArquivos(Celula *&viatura, Celula *&policiais, Celula *&pessoas);
 
 int main() {
-    int op;
+    int op, a;
     Celula *viaturas = NULL;
     Celula *policiais = NULL;
     Celula *pessoas = NULL;
@@ -54,11 +54,18 @@ int main() {
             );
         } else if(op == 3) {
             verificarReforcos(ireforcos, freforcos, viaturas);
-            criarChamadaPolicial(ichamadasP,fchamadasP,ichamadasNP, fchamadasNP, viaturas);
-            distribuirChamada(
-                ichamadasP, fchamadasP, ichamadasNP, ichamadasNP, 
-                viaturas, chamadasEmAndamento
-            );
+            do {
+                printf("\n1 - Criar chamada policial  2 - Cancelar\n");
+                scanf("%d", &a);
+            } while(a != 1 && a != 2);
+            
+            if(a == 1) {
+                criarChamadaPolicial(ichamadasP,fchamadasP,ichamadasNP, fchamadasNP, viaturas);
+                distribuirChamada(
+                    ichamadasP, fchamadasP, ichamadasNP, ichamadasNP, 
+                    viaturas, chamadasEmAndamento
+                );
+            }
         } else if(op == 4) {
             Celula *policial = login(policiais, PM);
             if(policial != NULL) {
