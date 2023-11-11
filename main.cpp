@@ -27,6 +27,14 @@ int main() {
     lerArquivos(viaturas, policiais, pessoas);
 
     do {
+        if(viaturaAtual != NULL && ((Viatura *)viaturaAtual->d)->status == VOLTOU_DP) {
+            ((Viatura *)viaturaAtual->d)->status = LIVRE;
+            viaturaNeutro(
+                viaturaAtual, pessoas, chamadasEmAndamento, viaturas, ichamadasP, fchamadasP,
+                ichamadasNP, fchamadasNP, chamadasFinalizadas, ireforcos, freforcos
+            );
+        }
+
         menu();
         scanf("%d", &op);
 

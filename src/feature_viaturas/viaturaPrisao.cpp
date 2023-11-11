@@ -42,6 +42,7 @@ void viaturaPrisao(
                 chamadasEmAndamento, ((Viatura *)viaturaAtual->d)->codigo, 
                 viaturas, chamadasFinalizadas
             ); 
+            ((Viatura *)viaturaAtual->d)->status = VOLTOU_DP;
         }
     } while(op != 1 && op != 2);
 }

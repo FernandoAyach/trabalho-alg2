@@ -9,7 +9,7 @@
 #define TIPO_REGULAR "regular"
 #define TIPO_ESPECIALIZADA "especializada"
 
-enum Status {NAO_APTO, LIVRE, INDISPONIVEL, CHAMADA, REFORCO};
+enum Status {NAO_APTO, LIVRE, INDISPONIVEL, CHAMADA, REFORCO, VOLTOU_DP};
 
 struct Viatura {
     char codigo[COD_VIATURA+1];
