@@ -3,7 +3,7 @@
 
 #define MAX 40
 #define CPF_SIZE 11
-#define PATH_PESSOA "D:\\Usuario\\Desktop\\Central\\Codes\\ufms\\alg2\\spm\\arquivos_entrada\\pessoas.txt"
+#define PATH_PESSOA "arquivos_entrada\\pessoas.txt"
 
 struct Pessoa {  
     char nome[MAX+1];

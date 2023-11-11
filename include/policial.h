@@ -3,8 +3,8 @@
 
 #define MAX 40
 #define CPF_SIZE 11
-#define PATH_POLICIAL "D:\\Usuario\\Desktop\\Central\\Codes\\ufms\\alg2\\spm\\arquivos_entrada\\policiais.txt"
-#define PATH_RELATORIO "D:\\Usuario\\Desktop\\Central\\Codes\\ufms\\alg2\\spm\\arquivos_saida\\relatorio.txt"
+#define PATH_POLICIAL "arquivos_entrada\\policiais.txt"
+#define PATH_RELATORIO "arquivos_saida\\relatorio.txt"
 #define OFICIAL "Oficial"
 #define COMANDANTE "Comandante Geral"
 #define PM "PM"

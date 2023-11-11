@@ -5,7 +5,7 @@
 #define COD_VIATURA 3
 #define MAX_POLICIAIS 4
 #define TIPO_VIATURA 13
-#define PATH_VIATURA "D:\\Usuario\\Desktop\\Central\\Codes\\ufms\\alg2\\spm\\arquivos_entrada\\viaturas.txt"
+#define PATH_VIATURA "arquivos_entrada\\viaturas.txt"
 #define TIPO_REGULAR "regular"
 #define TIPO_ESPECIALIZADA "especializada"
 

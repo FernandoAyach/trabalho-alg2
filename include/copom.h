@@ -3,8 +3,8 @@
 #include "linked_list.h"
 #include "viatura.h"
 
-#define PATH_BOLETIM "D:\\Usuario\\Desktop\\Central\\Codes\\ufms\\alg2\\spm\\arquivos_saida\\boletins.txt"
-#define PATH_OFICIO "D:\\Usuario\\Desktop\\Central\\Codes\\ufms\\alg2\\spm\\arquivos_saida\\oficio_ocorrencias.txt"
+#define PATH_BOLETIM "arquivos_saida\\boletins.txt"
+#define PATH_OFICIO "arquivos_saida\\oficio_ocorrencias.txt"
 
 struct Chamada {
     char tipoPolicia[TIPO_VIATURA+1];
