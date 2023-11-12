@@ -1,12 +1,22 @@
 Ocorrências -
 Tipo Policia: regular
-Descricao: a
-Localizacao: b
+Descricao: Abacaxi
+Localizacao: Manga
 Policiais:
 - Tigre;
 - Cobra;
 - Pantera;
 - Lobo;
 Presos:
-- Ana Costa, 99988877766;
+- João da Silva, 12345678900;
+- Carlos Santos, 11122233344;
+
+Tipo Policia: especializada
+Descricao: especial
+Localizacao: a
+Policiais:
+- Lima;
+- Sousa;
+- Almeida;
+- Pereira;
 

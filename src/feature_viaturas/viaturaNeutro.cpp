@@ -51,8 +51,6 @@ void viaturaNeutro(
             if(op == 3) return;
         }
     } while(op != 2);
-
-    desalocarViatura(viaturaAtual);
 }
 
 void menuNeutro(int &op) {

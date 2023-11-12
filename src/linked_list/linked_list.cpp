@@ -88,7 +88,6 @@ void removerChamada(Celula *&lst, char codigo[COD_VIATURA+1], Celula *viaturas, 
             i = 0; 
             while(
                 i < chamada->viaturasNecessarias && strcmp(chamada->codigoViatura[i], codigo) != 0 &&
-                strcmp(((Viatura *)chamada->reforco->d)->codigo, codigo) != 0 &&
                 ((Viatura *)chamada->reforco != NULL &&
                 strcmp(((Viatura *)chamada->reforco->d)->codigo, codigo) != 0
                 )
