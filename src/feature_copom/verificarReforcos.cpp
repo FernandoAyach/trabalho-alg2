@@ -10,7 +10,6 @@ Celula* obterReforco(Celula *lista);
 
 void verificarReforcos(Celula *&ireforcos, Celula *&freforcos, Celula *viaturas) {
     Celula *reforco = desenfileirar(ireforcos, freforcos);
-    printf("Desenfileirou o reforço\n");
     int op;
     if(reforco != NULL) printf("\nSPM - Pedidos de reforço:\n");
     while(reforco != NULL) {
@@ -19,13 +18,10 @@ void verificarReforcos(Celula *&ireforcos, Celula *&freforcos, Celula *viaturas)
         scanf("%d", &op);
 
         if(op == 1) {
-            printf("Reforço aceito\n");
             Celula *viatura = obterReforco(viaturas);
             if(viatura != NULL) {
-                printf("Achou viatura! %s\n", ((Viatura *)viatura->d)->codigo);
                 ((Viatura *)viatura->d)->status = REFORCO;
                 ((Chamada *)reforco->d)->reforco = viatura;
-                printf("Reforco: %s\n", ((Viatura *)((Chamada *)reforco->d)->reforco->d)->codigo);
             } else {
                 printf("Não achou viaturas para reforço\n");
             }
@@ -34,7 +30,6 @@ void verificarReforcos(Celula *&ireforcos, Celula *&freforcos, Celula *viaturas)
             printf("Reforço não aceito\n");
         }
         reforco = desenfileirar(ireforcos, freforcos);
-        printf("Desenfileirou o reforço\n");
     }
 }
 

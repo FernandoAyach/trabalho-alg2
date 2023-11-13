@@ -60,18 +60,15 @@ void distribuirChamada(
         printf("%s\n", ((Viatura *)aux->d)->codigo);
         chamada->codigoViatura[i] = (char *) calloc(1, sizeof(char));
         strcpy(chamada->codigoViatura[i], ((Viatura *)aux->d)->codigo);
-        printf("Copiou\n");
         i++;
         aux = aux->prox;
     }
     inserirFim(chamadasEmAndamento, chamada);
-    printf("Mandou pras chamadas em andamento\n");
 
     if(ichamadasP != NULL) desenfileirar(ichamadasP, fchamadasP);
     else desenfileirar(ichamadasNP, fchamadasNP);
     
     desalocar(finalistas);
-    printf("Desalocou\n");
 }
 
 void filtrarViaturas(Celula *lista, Celula *&preliminares, Chamada *chamada) {

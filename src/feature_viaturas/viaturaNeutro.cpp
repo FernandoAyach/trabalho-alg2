@@ -63,7 +63,6 @@ void menuNeutro(int &op) {
 Celula* obterChamada(Celula *viaturaAtual, Celula *chamadasEmAndamento) {
     Celula *aux = chamadasEmAndamento;
     while(aux != NULL) {
-        printf("Chamada %s\n", ((Chamada *)aux->d)->descricao);
         for(int i = 0; i < ((Chamada *)aux->d)->viaturasNecessarias; i++) {
             if(
                 strcmp(
@@ -77,7 +76,6 @@ Celula* obterChamada(Celula *viaturaAtual, Celula *chamadasEmAndamento) {
     }
     aux = chamadasEmAndamento;
     while(aux != NULL) {
-        printf("Chamada %s\n", ((Chamada *)aux->d)->descricao);
         for(int i = 0; i < ((Chamada *)aux->d)->viaturasNecessarias; i++) {
             if(
                 strcmp(

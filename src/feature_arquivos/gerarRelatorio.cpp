@@ -93,8 +93,6 @@ void imprimirRelatorio(Celula *v, Celula *p) {
     FILE *pArq;
     pArq = fopen(PATH_RELATORIO, "w");
 
-    printf("Abriu arquivo\n");
-
     if(pArq == NULL) {
         printf("[ERRO-ARQUIVOS]: Erro ao abrir relatorio.txt\n");
         return;
@@ -117,7 +115,6 @@ void imprimirRelatorio(Celula *v, Celula *p) {
     }
     
     printf("Relatório gerado!\n");
-    printf("Chegou ao final\n");
     
     fclose(pArq);
 }

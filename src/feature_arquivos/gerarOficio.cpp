@@ -24,21 +24,16 @@ void gerarOficio(Celula *chamadasFinalizadas, Celula *viaturas) {
         chamada = (Chamada *)chamadasFinalizadas->d;
 
         fprintf(pArq, "Tipo Policia: %s\n", chamada->tipoPolicia);
-        printf("Printou tipo policia\n");
         fprintf(pArq, "Descricao: %s\n", chamada->descricao);
-        printf("Printou descricao\n");
         fprintf(pArq, "Localizacao: %s\n", chamada->localizacao);
-        printf("Printou localizacao\n");
 
         Celula *viatura;
         fprintf(pArq, "Policiais:\n");
         for(int i = 0; i < chamada->viaturasNecessarias; i++) {
             viatura = buscarViatura(viaturas, chamada->codigoViatura[i]);
-            printf("Pegou a viatura\n");
             for(int j = 0; j < ((Viatura *)viatura->d)->nPoliciais; j++) {
                 fprintf(pArq, "- %s;\n", ((Viatura *)viatura->d)->policiais[j]);
             }
-            printf("Printou os policiais da viatura\n");
         }
 
         if(chamada->nPresos != 0) fprintf(pArq, "Presos:\n");
@@ -54,14 +49,12 @@ void gerarOficio(Celula *chamadasFinalizadas, Celula *viaturas) {
                 ((Pessoa *)chamada->presos[i]->d)->CPF
             );
         }
-        printf("Printou os presos");
         fprintf(pArq, "\n");
         
         chamadasFinalizadas = chamadasFinalizadas->prox;
     }
 
     printf("Ofício gerado!\n");
-    printf("Chegou ao final\n");
     
     fclose(pArq);
 }

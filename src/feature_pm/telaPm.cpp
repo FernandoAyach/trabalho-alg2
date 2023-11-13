@@ -73,9 +73,7 @@ void fazerBoletins(Celula *chamadasDoPolicial, Celula *viaturas) {
             char *boletimPM = (char *) malloc(10000 * sizeof(char));
             printf("Insira o boletim: ");
             scanf(" %[^\n]", boletimPM);
-            printf("Obteve boletim\n");
             ((Chamada *)chamadasDoPolicial->d)->boletim = boletimPM;
-            printf("Copiou\n");
             registrarBoletim((Chamada *)chamadasDoPolicial->d);
             printf("\nBoletim registrado\n");
         } 

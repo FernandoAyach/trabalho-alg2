@@ -54,7 +54,6 @@ void removerChamada(Celula *&lst, char codigo[COD_VIATURA+1], Celula *viaturas, 
 
     while(q != NULL) {
         chamada = ((Chamada *)q->d);
-        printf("Chamada atual: %s\n", chamada->descricao);
         i = 0; 
         while(
             i < chamada->viaturasNecessarias && (
@@ -68,11 +67,9 @@ void removerChamada(Celula *&lst, char codigo[COD_VIATURA+1], Celula *viaturas, 
             )
         ) {
             i++;
-            printf("Não achou ainda\n");
         }
 
         if(i < chamada->viaturasNecessarias) {
-            printf("Achou\n");
             break;
         }
         p = q;
@@ -80,7 +77,6 @@ void removerChamada(Celula *&lst, char codigo[COD_VIATURA+1], Celula *viaturas, 
     }
     
     if(q == NULL) {
-        printf("Não há prioritárias a deletar\n");
         p = NULL;
         q = lst;
         while(q != NULL) {
@@ -102,31 +98,24 @@ void removerChamada(Celula *&lst, char codigo[COD_VIATURA+1], Celula *viaturas, 
     }
 
     if(q != NULL) {
-        printf("Achou a chamada\n");
-        printf("Chamada a ser deletada %s\n", chamada->descricao);
         Celula *viatura;
         for(int i = 0; i < chamada->viaturasNecessarias; i++) {
             viatura = buscarViatura(viaturas, chamada->codigoViatura[i]);
             ((Viatura *)viatura->d)->status = LIVRE;
-            printf("Viatura envolvida: %s\n",  ((Viatura *)viatura->d)->codigo);
         }
         if(chamada->reforco != NULL) {
             ((Viatura *)chamada->reforco->d)->status = LIVRE;
             chamada->reforco = NULL;
-            printf("Liberou a viatura do reforço\n");
         }
         inserirFim(chamadasFinalizadas, chamada);
 
         if(p != NULL) {
             p->prox = q->prox;
             free(q);
-            printf("Deletou no meio\n");
         }else {
             lst = q->prox;
             free(q);
-            printf("Deletou no começo\n");
         }
-        printf("Deletou\n");
     } else {
         printf("Não há chamadas para esta viatura!\n");
     }

@@ -19,9 +19,7 @@ void registrarBoletim(Chamada *chamada) {
 
     fprintf(pArq, "Boletim - Chamada %s %s\n", chamada->descricao, chamada->localizacao);
     fprintf(pArq, "- %s\n", chamada->boletim);
-    printf("Printou boletim\n");
     fprintf(pArq, "\n");
-    printf("Chegou ao final\n");
     
     fclose(pArq);
 }

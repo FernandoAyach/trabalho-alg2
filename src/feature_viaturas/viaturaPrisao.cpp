@@ -24,11 +24,9 @@ void viaturaPrisao(
             scanf(" %[^\n]", cpf);
             Celula *pessoa = buscarPessoa(pessoas, cpf);
             presos[i] = pessoa;
-            printf("%s\n", ((Pessoa *)presos[i]->d)->nome);
             ((Chamada *)chamada->d)->nPresos++;
         }
         ((Chamada *)chamada->d)->presos = presos;
-        printf("%s\n", ((Pessoa*)((Chamada *)chamada->d)->presos[0]->d)->nome);
     }
 
     do {

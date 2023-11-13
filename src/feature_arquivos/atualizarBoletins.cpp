@@ -24,13 +24,10 @@ void atualizarBoletins(Celula *chamadasFinalizadas) {
         if(chamada->temBoletim) {
             fprintf(pArq, "Boletim - Chamada %s %s\n", chamada->descricao, chamada->localizacao);
             fprintf(pArq, "- %s\n", chamada->boletim);
-            printf("Printou boletim\n");
             fprintf(pArq, "\n");
         }
         chamadasFinalizadas = chamadasFinalizadas->prox;
     }
-
-    printf("Chegou ao final\n");
     
     fclose(pArq);
 }

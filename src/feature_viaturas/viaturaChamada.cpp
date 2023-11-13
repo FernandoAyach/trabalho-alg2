@@ -25,7 +25,6 @@ void viaturaChamada(
     menuChamada(descricao, localizacao, acaoPolicial);
     
     if(acaoPolicial == 2) {
-        printf("Escolheu dispensar\n");
         removerChamada(
             chamadasEmAndamento, ((Viatura *)viaturaAtual->d)->codigo, viaturas,
             chamadasFinalizadas
